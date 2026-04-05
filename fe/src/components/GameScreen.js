@@ -10,6 +10,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const amapRef = useRef(null);
 	const markersRef = useRef([]); // 存储 Marker 实例列表
 	const polylineRef = useRef(null); // 存储轨迹线实例
+	const iconsRef = useRef({ normal: null, selected: null }); // 存储图标实例
 	const [currentEventIndex, setCurrentEventIndex] = useState(0);
 	const [isMapLoaded, setIsMapLoaded] = useState(false);
 
@@ -86,26 +87,33 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		const polyline = new AMap.Polyline({
 			path: eventPaths,
 			showDir: true,
-			strokeColor: "#3b82f6",
-			strokeOpacity: 0.5,
-			strokeWeight: 4,
+			strokeColor: "#8E2323",
+			strokeOpacity: 0.6,
+			strokeWeight: 5,
 			lineJoin: 'round'
 		});
 		map.add(polyline);
 		polylineRef.current = polyline;
 
-		// 初始化所有点标记
-		const colorMap = {'蓝色': '#3b82f6', '红色': '#ef4444', '金色': '#facc15'};
+		// 初始化所有点标记（使用角色特定的PNG图标）
+		iconsRef.current.normal = new AMap.Icon({
+			image: player.markerIcon || '/images/markers/point.png',
+			size: new AMap.Size(32, 32),
+			imageSize: new AMap.Size(32, 32)
+		});
+		
+		iconsRef.current.selected = new AMap.Icon({
+			image: player.markerIconSelected || '/images/markers/point_selected.png',
+			size: new AMap.Size(40, 40),
+			imageSize: new AMap.Size(40, 40)
+		});
+		
 		const newMarkers = sortedEvents.map((event, index) => {
-			const marker = new AMap.CircleMarker({
-				center: [event.longitude, event.latitude],
-				radius: 6,
-				fillColor: colorMap[event.color] || '#3b82f6',
-				fillOpacity: 0.7,
-				strokeColor: '#fff',
-				strokeWeight: 1,
+			const marker = new AMap.Marker({
+				position: [event.longitude, event.latitude],
+				icon: iconsRef.current.normal,
 				zIndex: 10,
-				bubble: true
+				offset: new AMap.Pixel(-16, -16)
 			});
 			marker.on('click', () => setCurrentEventIndex(index));
 			marker.setMap(map);
@@ -116,33 +124,28 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		// 自动缩放以适应所有点
 		if (newMarkers.length > 0) map.setFitView(null, false, [60, 60, 60, 60]);
 
-	}, [isMapLoaded, sortedEvents, eventPaths]);
+	}, [isMapLoaded, sortedEvents, eventPaths, player]);
 
-	// 4. 处理点切换逻辑 (仅更新样式和视角，不重绘线段)
+	// 4. 处理点切换逻辑 (更新图标和视角)
 	useEffect(() => {
-		if (!isMapLoaded || markersRef.current.length === 0) return;
-
-		const colorMap = {'蓝色': '#3b82f6', '红色': '#ef4444', '黑色': '#000000', '金色': '#facc15'};
+		if (!isMapLoaded || markersRef.current.length === 0 || !iconsRef.current.normal || !iconsRef.current.selected || !amapRef.current) return;
+		
+		const AMap = amapRef.current;
 
 		// 遍历所有 Marker 实例
 		markersRef.current.forEach((marker, index) => {
 			const isCurrent = index === currentEventIndex;
-			const event = sortedEvents[index]; // 获取该 marker 对应的事件数据
-
-			// 关键：更新 Options 时包含 zIndex
-			marker.setOptions({
-				// 如果是当前点，半径加大，zIndex 设为极高
-				radius: isCurrent ? 14 : 7,
-				fillOpacity: isCurrent ? 1 : 0.6,
-				strokeWeight: isCurrent ? 3 : 1,
-				strokeColor: isCurrent ? '#ffffff' : '#eeeeee',
-
-				// 重点：解决重复经纬度遮挡问题
-				zIndex: isCurrent ? 1000 : 100,
-
-				// 明确设置颜色，确保高亮色能显示出来
-				fillColor: isCurrent ? '#f97316' : (colorMap[event.color] || '#3b82f6'),
-			});
+			
+			// 更新图标和zIndex
+			marker.setIcon(isCurrent ? iconsRef.current.selected : iconsRef.current.normal);
+			marker.setzIndex(isCurrent ? 1000 : 100);
+			
+			// 调整偏移量以适应不同大小的图标
+			if (isCurrent) {
+				marker.setOffset(new AMap.Pixel(-20, -20));
+			} else {
+				marker.setOffset(new AMap.Pixel(-16, -16));
+			}
 		});
 
 		// 平滑移动视角
@@ -205,12 +208,13 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				<div className="timeline-container">
 					<div className="timeline-track">
 						{sortedEvents.map((_, idx) => (
-							<div
+							<img
 								key={idx}
-								className="timeline-dot"
+								src={idx === currentEventIndex ? (player.markerIconSelected || '/images/markers/point_selected.png') : (player.markerIcon || '/images/markers/point.png')}
+								alt="时间点"
+								className={`timeline-dot ${idx === currentEventIndex ? 'active' : ''}`}
 								onClick={() => setCurrentEventIndex(idx)}
 								style={{
-									backgroundColor: idx === currentEventIndex ? '#f97316' : '#3b82f6',
 									left: `${(eventPositions[idx] * 100)}%`
 								}}
 							/>

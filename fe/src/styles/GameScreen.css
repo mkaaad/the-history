@@ -18,8 +18,8 @@
 	bottom: 30px;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 85%;
-	max-width: 1000px;
+	width: 95%;
+	max-width: 1200px;
 
 	/* 改为宣纸色，并添加半透明效果 */
 	background: rgba(247, 243, 232, 0.95);
@@ -59,8 +59,8 @@
 /* 时间轴容器 */
 .timeline-container {
 	position: relative;
-	height: 30px;
-	margin: 20px 0;
+	height: 40px;
+	margin: 25px 0;
 	display: flex;
 	align-items: center;
 }
@@ -69,44 +69,38 @@
 .timeline-track {
 	position: absolute;
 	top: 50%;
-	left: 0;
-	right: 0;
-	height: 3px;
-	/* 使用红色丝线效果 */
-	background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+	left: 5px;
+	right: 5px;
+	height: 4px;
+	/* 使用金色丝线效果 */
+	background: linear-gradient(90deg, transparent, var(--warning-color), var(--warning-color), transparent);
 	transform: translateY(-50%);
+	border-radius: 2px;
 }
 
 /* 时间轴圆点：模拟“珍珠”或“玉石” */
 .timeline-dot {
 	position: absolute;
 	top: 50%;
-	width: 14px;
-	height: 14px;
-	background-color: var(--warning-color);
-	/* 琉璃金 */
-	border: 2px solid var(--primary-dark);
-	border-radius: 50%;
+	width: 32px;
+	height: 32px;
 	cursor: pointer;
 	transform: translate(-50%, -50%);
 	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	box-shadow: 0 0 8px rgba(192, 149, 83, 0.5);
+	z-index: 2;
+	object-fit: contain;
 }
 
 .timeline-dot:hover {
-	transform: translate(-50%, -50%) scale(1.5);
-	background-color: var(--primary-color);
-	box-shadow: 0 0 15px var(--primary-color);
+	transform: translate(-50%, -50%) scale(1.6);
+	z-index: 3;
+	filter: drop-shadow(0 0 8px var(--warning-color));
 }
 
 /* 当前激活的时间点样式 */
 .timeline-dot.active {
-	width: 18px;
-	height: 18px;
-	background-color: var(--success-color);
-	/* 墨玉绿 */
-	border: 2px solid #fff;
-	box-shadow: 0 0 10px var(--success-color);
+	width: 40px;
+	height: 40px;
 }
 
 /* 响应式调整 */
