@@ -13,8 +13,11 @@ const SelectScreen = ({ onSelectCharacter }) => (
 					className="character-card"
 					onClick={() => onSelectCharacter(c)}
 				>
-					<h3 className="character-name">{c.name}</h3>
-					<p className="character-era">{c.era}</p>
+					<img src={c.image} alt={c.name} className="character-image" />
+					<div className="character-text-container">
+						<h3 className="character-name">{c.name}</h3>
+						<p className="character-era">{c.era}</p>
+					</div>
 				</div>
 			))}
 		</div>

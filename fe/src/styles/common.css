@@ -141,14 +141,20 @@ body {
 /* 人物卡片：模拟画轴感 */
 .character-card {
 	background: #fff;
-	border: 1px solid #e5e1d3;
+	border: 1px solid rgba(229, 225, 211, 0.6);
 	border-radius: 0;
 	/* 方正感 */
-	padding: 1rem;
-	width: 180px;
+	padding: 0;
+	width: 240px;
+	height: 320px; /* 高4宽3比例 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	transition: var(--transition);
 	text-align: center;
 	position: relative;
+	overflow: hidden;
+	opacity: 0.9;
 }
 
 .character-card::before {
@@ -163,24 +169,65 @@ body {
 
 .character-card:hover {
 	transform: scale(1.05);
-	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 	border-color: var(--warning-color);
+	opacity: 1;
+}
+
+.character-card:hover .character-text-container {
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
+}
+
+.character-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.character-text-container {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent);
+	padding: 1.5rem 0.5rem 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: var(--transition);
 }
 
 .character-name {
 	font-family: "STKaiti", "Kaiti", serif;
 	font-size: 1.8rem;
-	color: var(--text-dark);
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+	margin: 0;
+}
+
+.character-era {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1.2rem;
+	color: rgba(255, 255, 255, 0.9);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	margin: 0;
 }
 
 /* UI覆盖层：毛玻璃效果结合中式色彩 */
 .ui-overlay {
 	position: absolute;
-	background: rgba(255, 255, 255, 0.85);
-	backdrop-filter: blur(8px);
-	border: 1px solid var(--warning-color);
+	background: rgba(255, 252, 240, 0.95);
+	backdrop-filter: blur(10px);
+	border: 1px solid #d4af37;
 	padding: 1rem;
 	z-index: 1000;
+	border-radius: 2px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* 头像：圆形带金边 */
@@ -190,6 +237,11 @@ body {
 	border: 2px solid var(--warning-color);
 	border-radius: 50%;
 	object-fit: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	font-weight: bold;
 }
 
 /* 增加水墨渐变背景类 */
@@ -214,4 +266,140 @@ body {
 
 .animate-ink {
 	animation: inkSpread 1.2s ease-out forwards;
+}
+
+/* 卡片容器横向排列 */
+.card-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	margin: 2rem 0;
+}
+
+/* UI覆盖层位置类 */
+.overlay-top-left {
+	top: 20px;
+	left: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 120px;
+}
+
+.overlay-top-right {
+	top: 20px;
+	right: 20px;
+}
+
+/* 头像颜色变体 */
+.avatar-blue {
+	background-color: #3b82f6;
+	color: white;
+}
+
+.avatar-red {
+	background-color: #ef4444;
+	color: white;
+}
+
+.avatar-gray {
+	background-color: #6b7280;
+	color: white;
+}
+
+/* 中式按钮 */
+.btn-chinese {
+	background: var(--primary-color);
+	color: white;
+	text-shadow: 0 0 2px rgba(0,0,0,0.3);
+	padding: 0.5rem 1.5rem;
+	border: 1px solid var(--primary-dark);
+	border-radius: 2px;
+	cursor: pointer;
+	transition: var(--transition);
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	box-shadow: 2px 2px 0px var(--warning-color);
+}
+
+.btn-chinese:hover {
+	background: var(--primary-dark);
+	transform: translateY(-2px);
+	box-shadow: 4px 4px 0px var(--warning-color);
+}
+
+/* 按钮组 */
+.btn-group {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+/* 导航按钮 */
+.nav-btn {
+	padding: 0.5rem 1.5rem;
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.nav-btn:hover:not(:disabled) {
+	background-color: var(--primary-dark);
+	transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* 左上角人物信息样式 */
+.overlay-top-left .character-name {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1.2rem;
+	color: var(--text-dark);
+	margin: 0;
+	text-align: center;
+	font-weight: normal;
+	letter-spacing: 0.5px;
+}
+
+.overlay-top-left .character-era {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 0.9rem;
+	color: var(--text-gray);
+	margin: 0;
+	text-align: center;
+	letter-spacing: 0.5px;
+}
+
+/* 右上角按钮容器美化 */
+.overlay-top-right {
+	padding: 0.8rem 1.2rem;
+	background: rgba(255, 252, 240, 0.9);
+	border: 1px solid #c09553;
+}
+
+/* 左上角头像调整 */
+.overlay-top-left .avatar {
+	width: 3rem;
+	height: 3rem;
+	font-size: 1.2rem;
+}
+
+/* 右上角独立按钮 */
+.btn-top-right {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 1000;
 }

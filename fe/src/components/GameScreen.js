@@ -191,11 +191,9 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			</div>
 
 			{/* 右上角返回按钮 */}
-			<div className="ui-overlay overlay-top-right">
-				<button className="btn-glass" onClick={onBackToSelect}>
-					返回选择
-				</button>
-			</div>
+			<button className="btn-chinese btn-top-right" onClick={onBackToSelect}>
+				返回选择
+			</button>
 
 			{/* 底部 UI */}
 			<div className="bottom-panel">
