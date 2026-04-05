@@ -1,0 +1,86 @@
+/* 右侧边栏样式 */
+.right-sidebar {
+  position: fixed;
+  right: 0;
+  top: 100px;
+  display: flex;
+  height: 400px;
+  z-index: 999;
+}
+
+.sidebar-handle {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px 0 0 8px;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: none;
+  height: 100%;
+  min-height: 0;
+  width: 40px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.handle-icon {
+  font-size: 1.2rem;
+  color: #4b5563;
+  transform: rotate(90deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.sidebar-content {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 8px 0 0 8px;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: none;
+  overflow: hidden;
+  width: 0;
+  transition: width 0.3s ease;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.right-sidebar.expanded .sidebar-content {
+  width: 260px;
+}
+
+.sidebar-panel {
+  padding: 1.5rem;
+  color: #1f2937;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar-panel.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar-panel.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-panel h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.sidebar-panel p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}

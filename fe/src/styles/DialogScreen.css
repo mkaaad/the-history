@@ -1,0 +1,9 @@
+/* DialogScreen 特有样式 */
+
+.dialog-content p {
+  margin-bottom: 1rem;
+}
+
+.dialog-content p:last-child {
+  margin-bottom: 0;
+}

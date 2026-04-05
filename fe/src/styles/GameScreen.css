@@ -1,0 +1,49 @@
+/* GameScreen 特有样式 */
+
+/* 地图容器样式 */
+.map-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* 底部面板样式（替代部分内联样式） */
+.bottom-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.timeline-container {
+  position: relative;
+  height: 20px;
+  margin: 10px 0;
+}
+
+.timeline-track {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ccc;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 按钮组样式已在common.css中定义 */

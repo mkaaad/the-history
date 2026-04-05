@@ -1,0 +1,292 @@
+[
+{
+    "name": "李白",
+    "state": "降生·太白入梦",
+    "start_year": 701,
+    "end_year": 701,
+    "stage": "碎叶与蜀中",
+    "longitude": 75.29,
+    "latitude": 42.84,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "五岁·迁居蜀中",
+    "start_year": 705,
+    "end_year": 705,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.72,
+    "latitude": 31.78,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "十至十二岁·攻读百",
+    "start_year": 710,
+    "end_year": 712,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.72,
+    "latitude": 31.78,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "十三至十四岁·玄宗登",
+    "start_year": 713,
+    "end_year": 714,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.72,
+    "latitude": 31.78,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "十五至十七岁·立志·隐居戴天山",
+    "start_year": 713,
+    "end_year": 717,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.63,
+    "latitude": 31.70,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "二十岁·蜀中干谒·谒见苏颋",
+    "start_year": 720,
+    "end_year": 720,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.71667,
+    "latitude": 31.78333,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "二十一至二十四岁·",
+    "start_year": 721,
+    "end_year": 724,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.71667,
+    "latitude": 31.78333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "二十五岁·仗剑去国·辞亲远",
+    "start_year": 725,
+    "end_year": 725,
+    "stage": "碎叶与蜀中",
+    "longitude": 104.08333,
+    "latitude": 30.65,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "二十六至二十七岁·游历与扎根",
+    "start_year": 726,
+    "end_year": 727,
+    "stage": "碎叶与蜀中",
+    "longitude": 106.45,
+    "latitude": 29.55,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "二十七岁·第一段婚姻",
+    "start_year": 727,
+    "end_year": 727,
+    "stage": "安陆入赘与“蹉跎十年”",
+    "longitude": 113.68333,
+    "latitude": 31.25,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "三十岁·初入长安·求仕失败",
+    "start_year": 730,
+    "end_year": 730,
+    "stage": "安陆入赘与“蹉跎十年”",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "三十四至三十",
+    "start_year": 734,
+    "end_year": 736,
+    "stage": "安陆入赘与“蹉跎十年”",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "三十八岁·丧妻",
+    "start_year": 738,
+    "end_year": 738,
+    "stage": "安陆入赘与“蹉跎十年”",
+    "longitude": 112.45,
+    "latitude": 34.61667,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "三十九岁·第二次婚姻（刘氏）",
+    "start_year": 739,
+    "end_year": 739,
+    "stage": "移家东鲁与第二次婚姻",
+    "longitude": 116.0,
+    "latitude": 35.5,
+    "color": "黑色"
+  },
+  {
+    "name": "李白",
+    "state": "四十二岁·奉诏入京",
+    "start_year": 742,
+    "end_year": 742,
+    "stage": "移家东鲁与第二次婚姻",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "人生大转折",
+    "start_year": 742,
+    "end_year": 744,
+    "stage": "移家东鲁与第二次婚姻",
+    "longitude": 116.0,
+    "latitude": 35.5,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "四十四岁·翰林生涯与赐金放还",
+    "start_year": 744,
+    "end_year": 744,
+    "stage": "移家东鲁与第二次婚姻",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "离京·与杜甫高适同游",
+    "start_year": 744,
+    "end_year": 744,
+    "stage": "漫游·梁宋之会与东鲁生涯",
+    "longitude": 114.3,
+    "latitude": 34.78333,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "求仙问道",
+    "start_year": 744,
+    "end_year": 745,
+    "stage": "漫游·梁宋之会与东鲁生涯",
+    "longitude": 114.3,
+    "latitude": 34.78333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "与杜甫第三次相见",
+    "start_year": 745,
+    "end_year": 745,
+    "stage": "漫游·梁宋之会与东鲁生涯",
+    "longitude": 114.3,
+    "latitude": 34.78333,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "第四段婚姻（宗氏·终老伴侣）",
+    "start_year": 750,
+    "end_year": 751,
+    "stage": "漫游·梁宋之会与东鲁生涯",
+    "longitude": 118.0,
+    "latitude": 31.5,
+    "color": "蓝色"
+  },
+  {
+    "name": "李白",
+    "state": "五十五岁·避乱庐山",
+    "start_year": 755,
+    "end_year": 755,
+    "stage": "安史之乱·永王幕府与人生谷底",
+    "longitude": 115.98333,
+    "latitude": 29.71667,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "五十六岁·永王聘书",
+    "start_year": 756,
+    "end_year": 756,
+    "stage": "安史之乱·永王幕府与人生谷底",
+    "longitude": 115.86667,
+    "latitude": 29.43333,
+    "color": "灰色"
+  },
+  {
+    "name": "李白",
+    "state": "五十七岁·兵败·被捕·论罪当诛",
+    "start_year": 757,
+    "end_year": 757,
+    "stage": "安史之乱·永王幕府与人生谷底",
+    "longitude": 112.25,
+    "latitude": 30.33333,
+    "color": "红色"
+  },
+  {
+    "name": "李白",
+    "state": "五十八岁·流放夜郎",
+    "start_year": 758,
+    "end_year": 758,
+    "stage": "安史之乱·永王幕府与人生谷底",
+    "longitude": 115.98333,
+    "latitude": 29.71667,
+    "color": "黑色"
+  },
+  {
+    "name": "李白",
+    "state": "五十九岁·遇赦·绝处逢生",
+    "start_year": 759,
+    "end_year": 759,
+    "stage": "安史之乱·永王幕府与人生谷底",
+    "longitude": 106.81667,
+    "latitude": 28.13333,
+    "color": "黑色"
+  },
+  {
+    "name": "李白",
+    "state": "六十至六十一岁·穷困潦倒",
+    "start_year": 760,
+    "end_year": 761,
+    "stage": "暮年漂泊·最后的诗情与辞世",
+    "longitude": 109.58333,
+    "latitude": 31.05,
+    "color": "灰色"
+  },
+  {
+    "name": "李白",
+    "state": "六十一岁·最后请缨",
+    "start_year": 761,
+    "end_year": 761,
+    "stage": "暮年漂泊·最后的诗情与辞世",
+    "longitude": 114.31667,
+    "latitude": 30.53333,
+    "color": "灰色"
+  },
+  {
+    "name": "李白",
+    "state": "六十二岁·病逝当涂",
+    "start_year": 762,
+    "end_year": 762,
+    "stage": "暮年漂泊·最后的诗情与辞世",
+    "longitude": 118.78333,
+    "latitude": 32.03333,
+    "color": "红色"
+  }
+]

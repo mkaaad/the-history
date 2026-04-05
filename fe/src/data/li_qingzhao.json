@@ -1,0 +1,232 @@
+[
+  {
+    "name": "李清照",
+    "state": "降生·名门之女",
+    "start_year": 1084,
+    "end_year": 1084,
+    "stage": "书香门第与汴京少女",
+    "longitude": 117.51667,
+    "latitude": 36.68333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "五至十四岁·家学浸润",
+    "start_year": 1089,
+    "end_year": 1098,
+    "stage": "书香门第与汴京少女",
+    "longitude": 117.51667,
+    "latitude": 36.68333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "十六岁·随父赴汴京·《如梦令》",
+    "start_year": 1099,
+    "end_year": 1099,
+    "stage": "书香门第与汴京少女",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "十七岁·诗名更盛",
+    "start_year": 1100,
+    "end_year": 1100,
+    "stage": "书香门第与汴京少女",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "红色"
+  },
+  {
+    "name": "李清照",
+    "state": "十八岁·嫁与赵明诚",
+    "start_year": 1101,
+    "end_year": 1101,
+    "stage": "琴瑟和鸣与金石姻缘",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "红色"
+  },
+  {
+    "name": "李清照",
+    "state": "十九岁·党争风云",
+    "start_year": 1102,
+    "end_year": 1102,
+    "stage": "琴瑟和鸣与金石姻缘",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "红色"
+  },
+  {
+    "name": "李清照",
+    "state": "二十至二十二岁·党祸起伏",
+    "start_year": 1103,
+    "end_year": 1105,
+    "stage": "琴瑟和鸣与金石姻缘",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "二十三岁·党禁解除",
+    "start_year": 1106,
+    "end_year": 1106,
+    "stage": "琴瑟和鸣与金石姻缘",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "二十四岁·屏居青州",
+    "start_year": 1107,
+    "end_year": 1107,
+    "stage": "屏居青州与十年静好",
+    "longitude": 118.8,
+    "latitude": 37.13333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "青州十年·学术鼎盛",
+    "start_year": 1108,
+    "end_year": 1119,
+    "stage": "屏居青州与十年静好",
+    "longitude": 118.8,
+    "latitude": 37.13333,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "离别·仕途重启",
+    "start_year": 1120,
+    "end_year": 1121,
+    "stage": "屏居青州与十年静好",
+    "longitude": 120.56667,
+    "latitude": 37.3,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十三岁·金兵围城",
+    "start_year": 1126,
+    "end_year": 1126,
+    "stage": "风云骤变与国破家亡",
+    "longitude": 118.6,
+    "latitude": 36.68333,
+    "color": "蓝色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十四岁·南渡·青州之焚",
+    "start_year": 1127,
+    "end_year": 1127,
+    "stage": "风云骤变与国破家亡",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十五岁·抵达建康",
+    "start_year": 1128,
+    "end_year": 1128,
+    "stage": "风云骤变与国破家亡",
+    "longitude": 118.78333,
+    "latitude": 32.05,
+    "color": "黑色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十六岁·人生至暗时刻",
+    "start_year": 1129,
+    "end_year": 1129,
+    "stage": "风云骤变与国破家亡",
+    "longitude": 119.3,
+    "latitude": 32.06667,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十七岁·护书逃亡",
+    "start_year": 1130,
+    "end_year": 1130,
+    "stage": "孤身漂泊与文物散失",
+    "longitude": 117.81667,
+    "latitude": 31.1,
+    "color": "黑色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十八岁·越州被盗",
+    "start_year": 1131,
+    "end_year": 1131,
+    "stage": "孤身漂泊与文物散失",
+    "longitude": 120.96667,
+    "latitude": 30.65,
+    "color": "黑色"
+  },
+  {
+    "name": "李清照",
+    "state": "四十九岁·再嫁与离婚",
+    "start_year": 1132,
+    "end_year": 1132,
+    "stage": "再嫁风暴与惊世官司",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "黑色"
+  },
+  {
+    "name": "李清照",
+    "state": "五十岁·重获自由",
+    "start_year": 1133,
+    "end_year": 1133,
+    "stage": "再嫁风暴与惊世官司",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "五十一岁·避乱金华",
+    "start_year": 1134,
+    "end_year": 1134,
+    "stage": "垂暮之年与文坛归宿",
+    "longitude": 119.65,
+    "latitude": 29.08333,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "五十二至六十岁·晚年漂流",
+    "start_year": 1135,
+    "end_year": 1143,
+    "stage": "垂暮之年与文坛归宿",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "晚年学术",
+    "start_year": 1144,
+    "end_year": 1155,
+    "stage": "垂暮之年与文坛归宿",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "灰色"
+  },
+  {
+    "name": "李清照",
+    "state": "约七十一岁·卒于临安",
+    "start_year": 1155,
+    "end_year": 1156,
+    "stage": "垂暮之年与文坛归宿",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "灰色"
+  }
+]

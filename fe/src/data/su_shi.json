@@ -1,0 +1,362 @@
+[
+  {
+    "name": "苏轼",
+    "state": "诞生·天赐文星",
+    "start_year": 1037,
+    "end_year": 1037,
+    "stage": "科举之路与初入仕途",
+    "longitude": 103.73333,
+    "latitude": 30.08333,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "幼年受教",
+    "start_year": 1039,
+    "end_year": 1053,
+    "stage": "科举之路与初入仕途",
+    "longitude": 103.73333,
+    "latitude": 30.08333,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "十九岁·娶妻王弗",
+    "start_year": 1054,
+    "end_year": 1054,
+    "stage": "科举之路与初入仕途",
+    "longitude": 103.73333,
+    "latitude": 30.08333,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "二十一岁·父子三人赴京赶考",
+    "start_year": 1056,
+    "end_year": 1056,
+    "stage": "科举之路与初入仕途",
+    "longitude": 103.73333,
+    "latitude": 30.08333,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "二十二岁·进士及第·名动京师",
+    "start_year": 1057,
+    "end_year": 1057,
+    "stage": "科举之路与初入仕途",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "二十四岁·二次出蜀",
+    "start_year": 1059,
+    "end_year": 1059,
+    "stage": "科举之路与初入仕途",
+    "longitude": 103.73333,
+    "latitude": 30.08333,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "二十五岁·初授官职",
+    "start_year": 1060,
+    "end_year": 1060,
+    "stage": "科举之路与初入仕途",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "二十六岁·制科百年第一",
+    "start_year": 1061,
+    "end_year": 1061,
+    "stage": "科举之路与初入仕途",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "签判凤翔",
+    "start_year": 1062,
+    "end_year": 1064,
+    "stage": "科举之路与初入仕途",
+    "longitude": 107.63333,
+    "latitude": 34.86667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十岁·丧妻王弗",
+    "start_year": 1065,
+    "end_year": 1065,
+    "stage": "科举之路与初入仕途",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十一岁·丧父苏洵",
+    "start_year": 1066,
+    "end_year": 1066,
+    "stage": "科举之路与初入仕途",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十三岁·续娶王闰之",
+    "start_year": 1068,
+    "end_year": 1068,
+    "stage": "科举之路与初入仕途",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十四岁·反对变法",
+    "start_year": 1069,
+    "end_year": 1069,
+    "stage": "卷入党争与自请外放",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "灰色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十六岁·自请外放·通判杭州",
+    "start_year": 1071,
+    "end_year": 1071,
+    "stage": "卷入党争与自请外放",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "杭州·造福百姓",
+    "start_year": 1072,
+    "end_year": 1074,
+    "stage": "卷入党争与自请外放",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "三十九岁·移知密州",
+    "start_year": 1074,
+    "end_year": 1074,
+    "stage": "卷入党争与自请外放",
+    "longitude": 119.66667,
+    "latitude": 36.65,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十岁·《江城子》悼亡",
+    "start_year": 1075,
+    "end_year": 1075,
+    "stage": "卷入党争与自请外放",
+    "longitude": 119.66667,
+    "latitude": 36.65,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十一岁·《水调歌头》",
+    "start_year": 1076,
+    "end_year": 1076,
+    "stage": "卷入党争与自请外放",
+    "longitude": 119.66667,
+    "latitude": 36.65,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "徐州·抗洪抢险",
+    "start_year": 1077,
+    "end_year": 1078,
+    "stage": "卷入党争与自请外放",
+    "longitude": 117.3,
+    "latitude": 34.43333,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十四岁·乌台诗案",
+    "start_year": 1079,
+    "end_year": 1079,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 117.3,
+    "latitude": 34.43333,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十五岁·贬谪黄州",
+    "start_year": 1080,
+    "end_year": 1080,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 115.45,
+    "latitude": 30.75,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "东坡躬耕·自号东坡居士",
+    "start_year": 1081,
+    "end_year": 1082,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 115.45,
+    "latitude": 30.75,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十八岁·丧子苏遁",
+    "start_year": 1083,
+    "end_year": 1083,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 115.45,
+    "latitude": 30.75,
+    "color": "灰色"
+  },
+  {
+    "name": "苏轼",
+    "state": "四十九岁·离黄州·《题西林壁》",
+    "start_year": 1084,
+    "end_year": 1084,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "五十岁·还朝·高太后垂帘",
+    "start_year": 1085,
+    "end_year": 1085,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "朝堂风波·不趋时势",
+    "start_year": 1086,
+    "end_year": 1088,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "五十二岁·出知杭州·疏浚西湖",
+    "start_year": 1089,
+    "end_year": 1091,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "辗转颍州、扬州、定州",
+    "start_year": 1091,
+    "end_year": 1093,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "五十七岁·丧妻王闰之",
+    "start_year": 1093,
+    "end_year": 1093,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 116.35,
+    "latitude": 33.48333,
+    "color": "蓝色"
+  },
+  {
+    "name": "苏轼",
+    "state": "五十七岁·一贬惠州",
+    "start_year": 1094,
+    "end_year": 1094,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 114.68333,
+    "latitude": 23.18333,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "惠州岁月",
+    "start_year": 1095,
+    "end_year": 1096,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 114.68333,
+    "latitude": 23.18333,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "六十岁·再贬儋州",
+    "start_year": 1097,
+    "end_year": 1097,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "儋州三载·文明拓荒",
+    "start_year": 1098,
+    "end_year": 1100,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "黑色"
+  },
+  {
+    "name": "苏轼",
+    "state": "六十三岁·遇赦北归",
+    "start_year": 1100,
+    "end_year": 1100,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "灰色"
+  },
+  {
+    "name": "苏轼",
+    "state": "六十四岁·《自题金山画像》",
+    "start_year": 1101,
+    "end_year": 1101,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 119.73333,
+    "latitude": 32.35,
+    "color": "红色"
+  },
+  {
+    "name": "苏轼",
+    "state": "病逝常州",
+    "start_year": 1101,
+    "end_year": 1101,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 119.73333,
+    "latitude": 32.35,
+    "color": "蓝色"
+  }
+]

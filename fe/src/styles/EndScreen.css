@@ -1,0 +1,6 @@
+/* EndScreen 特有样式 */
+
+.summary-box p {
+  line-height: 1.6;
+  color: #d1d5db;
+}
