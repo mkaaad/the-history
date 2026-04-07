@@ -97,13 +97,13 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 		// 初始化所有点标记（使用角色特定的PNG图标）
 		iconsRef.current.normal = new AMap.Icon({
-			image: player.markerIcon || '/images/markers/point.png',
+			image: player.markerIcon || 'images/markers/point.png',
 			size: new AMap.Size(32, 32),
 			imageSize: new AMap.Size(32, 32)
 		});
 		
 		iconsRef.current.selected = new AMap.Icon({
-			image: player.markerIconSelected || '/images/markers/point_selected.png',
+			image: player.markerIconSelected || 'images/markers/point_selected.png',
 			size: new AMap.Size(40, 40),
 			imageSize: new AMap.Size(40, 40)
 		});
@@ -210,7 +210,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						{sortedEvents.map((_, idx) => (
 							<img
 								key={idx}
-								src={idx === currentEventIndex ? (player.markerIconSelected || '/images/markers/point_selected.png') : (player.markerIcon || '/images/markers/point.png')}
+								src={idx === currentEventIndex ? (player.markerIconSelected || 'images/markers/point_selected.png') : (player.markerIcon || 'images/markers/point.png')}
 								alt="时间点"
 								className={`timeline-dot ${idx === currentEventIndex ? 'active' : ''}`}
 								onClick={() => setCurrentEventIndex(idx)}
