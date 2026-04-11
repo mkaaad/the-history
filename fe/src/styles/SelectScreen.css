@@ -1,2 +1,327 @@
-/* SelectScreen 特有样式 */
-/* 目前没有特有样式，共享样式在 common.css 中定义 */
+/* 翻转卡片选择界面样式 */
+
+/* 卡片容器 */
+.flip-card-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 2.5rem;
+	margin: 2rem 0;
+	padding: 1rem;
+}
+
+/* 翻转卡片 */
+.flip-card {
+	width: 500px;
+	height: 750px;
+	perspective: 1000px;
+	cursor: pointer;
+	position: relative;
+	transform-style: preserve-3d;
+}
+
+.flip-card.flipped {
+	cursor: default;
+}
+
+/* 卡片正面和背面共用样式 */
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	background: #fff;
+	transform-origin: center;
+	box-sizing: border-box;
+}
+
+/* 卡片正面 */
+.flip-card-front {
+	background: #fff;
+	border: 1px solid rgba(229, 225, 211, 0.8);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 2;
+}
+
+.flip-card-front::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: var(--primary-color);
+}
+
+/* 翻转图标按钮 */
+.flip-icon-btn {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.9);
+	border: 2px solid var(--warning-color);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 10;
+	transition: var(--transition);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-icon-btn:hover {
+	background: var(--warning-color);
+	transform: scale(1.1);
+}
+
+/* 翻转图标图片 */
+.flip-icon-img {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+}
+
+.flip-icon-btn:hover .flip-icon-img {
+	filter: brightness(0) invert(1);
+}
+
+/* 卡片图像 */
+.flip-card-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 1;
+}
+
+/* 卡片文字容器 */
+.flip-card-text-container {
+	position: absolute;
+	bottom: 70px;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3), transparent);
+	padding: 1.2rem 0.5rem 0.6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.flip-card-name {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 2.2rem;
+	color: #fff;
+	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+	margin: 0;
+}
+
+.flip-card-era {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1.4rem;
+	color: rgba(255, 255, 255, 0.9);
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+	margin: 0.5rem 0 0 0;
+}
+
+/* 卡片底部操作区 */
+.flip-card-action {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 1rem;
+	background: rgba(255, 255, 255, 0.95);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid rgba(229, 225, 211, 0.8);
+	z-index: 4;
+}
+
+/* 卡片背面 */
+.flip-card-back {
+	background: var(--light-bg);
+	background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+	transform: rotateY(180deg);
+	border: 2px solid var(--warning-color);
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+}
+
+/* 翻转状态 */
+.flip-card.flipped .flip-card-front {
+	transform: rotateY(-180deg);
+}
+
+.flip-card.flipped .flip-card-back {
+	transform: rotateY(0deg);
+}
+
+/* 卡片背面内容 */
+.flip-card-back-content {
+	padding: 1.5rem;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.biography-title {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1.6rem;
+	color: var(--primary-color);
+	text-align: center;
+	margin: 0 0 1rem 0;
+	padding-bottom: 0.6rem;
+	border-bottom: 2px solid var(--warning-color);
+}
+
+/* 传记字段容器 */
+.biography-fields {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.6rem;
+	overflow-y: auto;
+	padding-right: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+@media (min-width: 900px) {
+	.biography-fields {
+		grid-template-columns: 1fr 1fr;
+		gap: 0.8rem 1.5rem;
+	}
+}
+
+.biography-fields::-webkit-scrollbar {
+	width: 5px;
+}
+
+.biography-fields::-webkit-scrollbar-thumb {
+	background-color: var(--warning-color);
+	border-radius: 3px;
+}
+
+/* 传记字段样式 */
+.biography-field {
+	margin-bottom: 0;
+	line-height: 1.4;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px dashed rgba(192, 149, 83, 0.2);
+	break-inside: avoid;
+}
+
+.biography-field:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.biography-field strong {
+	color: var(--primary-dark);
+	font-weight: 600;
+	display: block;
+	margin-bottom: 0.2rem;
+	font-size: 0.95rem;
+}
+
+.biography-field span {
+	color: var(--text-dark);
+	font-size: 0.9rem;
+	display: block;
+	line-height: 1.35;
+}
+
+/* 卡片背面操作按钮 */
+.flip-card-back-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 0.8rem;
+	border-top: 1px solid rgba(192, 149, 83, 0.3);
+}
+
+.flip-back-btn {
+	padding: 0.6rem 1.5rem;
+	background-color: transparent;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: var(--transition);
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 0.95rem;
+}
+
+.flip-back-btn:hover {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+	.flip-card {
+		width: 450px;
+		height: 700px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.flip-card {
+		width: 400px;
+		height: 650px;
+	}
+}
+
+@media (max-width: 768px) {
+	.flip-card-container {
+		gap: 1.5rem;
+	}
+	
+	.flip-card {
+		width: 350px;
+		height: 600px;
+	}
+	
+	.flip-card-back-content {
+		padding: 1.2rem;
+	}
+	
+	.biography-title {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.biography-field {
+		margin-bottom: 0.7rem;
+	}
+	
+	.biography-field strong {
+		font-size: 0.9rem;
+	}
+	
+	.biography-field span {
+		font-size: 0.85rem;
+		line-height: 1.3;
+	}
+}

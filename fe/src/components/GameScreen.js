@@ -52,6 +52,8 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 	const eventPaths = useMemo(() => sortedEvents.map(e => [e.longitude, e.latitude]), [sortedEvents]);
 
+
+
 	// 2. 初始化地图 (仅执行一次)
 	useEffect(() => {
 		AMapLoader.load({
@@ -183,16 +185,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 			<RightSidebar />
 
-			{/* 左上角人物卡片 */}
-			<div className="ui-overlay overlay-top-left">
-				<div className={`avatar avatar-${player.color || 'gray'}`}>
-					{player.name?.charAt(0) || '?'}
-				</div>
-				<div>
-					<div className="character-name">{player.name}</div>
-					<div className="character-era">{player.era}</div>
-				</div>
-			</div>
+
 
 			{/* 右上角返回按钮 */}
 			<button className="btn-chinese btn-top-right" onClick={onBackToSelect}>
