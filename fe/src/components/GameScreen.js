@@ -183,7 +183,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		<div style={{width: '100%', height: '100vh', position: 'relative'}}>
 			<div ref={mapRef} style={{width: '100%', height: '100%'}} />
 
-			<RightSidebar />
+			<RightSidebar event={sortedEvents[currentEventIndex]} />
 
 
 

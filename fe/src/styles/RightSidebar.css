@@ -31,6 +31,7 @@
 	flex-shrink: 0;
 	box-sizing: border-box;
 	transition: var(--transition);
+	position: relative;
 
 	/* 增加一种类似丝绸的微光效果 */
 	background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
@@ -120,6 +121,20 @@
 	/* 两端对齐，更有印刷感 */
 }
 
+/* 事件内容样式 */
+.event-content {
+	font-family: "STKaiti", "Kaiti", serif;
+	font-size: 1rem;
+	line-height: 1.8;
+	text-align: justify;
+	margin: 0;
+}
+
+.event-content p {
+	color: inherit;
+	margin: 0;
+}
+
 /* 面板显示/隐藏动画 */
 .sidebar-panel.hidden {
 	opacity: 0;
@@ -131,4 +146,50 @@
 	transform: translateX(0);
 	transition: all 0.5s ease 0.2s;
 	/* 延迟显示，等待侧边栏展开 */
+}
+
+/* 固定按钮样式 */
+.pin-button {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 3px;
+	color: #f7f3e8;
+	font-size: 1rem;
+	cursor: pointer;
+	padding: 0.2rem 0.4rem;
+	transition: var(--transition);
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+}
+
+.pin-button:hover {
+	background: rgba(255, 255, 255, 0.3);
+	border-color: rgba(255, 255, 255, 0.5);
+	transform: translateX(-50%) scale(1.1);
+}
+
+.pin-button.pinned {
+	background: var(--warning-color);
+	color: #fff;
+	border-color: var(--warning-color);
+}
+
+/* 固定状态下的侧边栏样式 */
+.right-sidebar.pinned .sidebar-handle {
+	background-color: var(--primary-dark);
+	border-color: var(--warning-color);
+	box-shadow: 0 0 0 2px var(--warning-color) inset;
+}
+
+.right-sidebar.pinned.expanded .sidebar-content {
+	border-left: 3px double var(--warning-color);
+	box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.08), 0 0 10px rgba(192, 149, 83, 0.3);
 }
