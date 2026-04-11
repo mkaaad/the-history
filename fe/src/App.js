@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 // 导入组件
@@ -31,21 +31,21 @@ export default function HistoricalGame() {
 			{currentView === 'start' && <StartScreen onStart={handleStart} />}
 			{currentView === 'select' && <SelectScreen onSelectCharacter={handleSelectCharacter} />}
 			{currentView === 'game' && player && (
-				<GameScreen 
-					player={player} 
+				<GameScreen
+					player={player}
 					onBackToSelect={handleBackToSelect}
 					onManualTrigger={handleManualTrigger}
 				/>
 			)}
 			{currentView === 'dialog' && (
-				<DialogScreen 
+				<DialogScreen
 					onEnd={handleEnd}
 					onBackToGame={handleBackToGame}
 				/>
 			)}
 			{currentView === 'end' && player && (
-				<EndScreen 
-					player={player} 
+				<EndScreen
+					player={player}
 					onRestart={handleRestart}
 				/>
 			)}

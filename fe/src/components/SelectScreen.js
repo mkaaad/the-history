@@ -35,35 +35,35 @@ const SelectScreen = ({onSelectCharacter}) => {
 		// 获取卡片位置
 		const index = CHARACTERS.findIndex(c => c.id === character.id);
 		const cardElement = cardRefs.current[index];
-		
+
 		if (cardElement) {
 			const cardRect = cardElement.getBoundingClientRect();
 			const containerRect = cardElement.parentElement.getBoundingClientRect();
-			
+
 			// 计算卡片相对于容器的位置（用于绝对定位）
 			const top = cardRect.top - containerRect.top;
 			const left = cardRect.left - containerRect.left;
 			const width = cardRect.width;
 			const height = cardRect.height;
-			
+
 			// 计算卡片中心与容器中心的差值（用于移动动画）
 			const cardCenterX = cardRect.left + cardRect.width / 2;
 			const cardCenterY = cardRect.top + cardRect.height / 2;
 			const containerCenterX = containerRect.left + containerRect.width / 2;
 			const containerCenterY = containerRect.top + containerRect.height / 2;
-			
+
 			const moveX = containerCenterX - cardCenterX;
 			const moveY = containerCenterY - cardCenterY;
-			
+
 			// 设置克隆卡片状态
 			setClonedCard({
 				character,
-				position: { top, left },
-				dimensions: { width, height },
-				moveDistance: { x: moveX, y: moveY }
+				position: {top, left},
+				dimensions: {width, height},
+				moveDistance: {x: moveX, y: moveY}
 			});
 		}
-		
+
 		// 开始过渡动画
 		setSelectedCharacter(character.id);
 		setTransitioning(true);
@@ -85,7 +85,7 @@ const SelectScreen = ({onSelectCharacter}) => {
 
 	return (
 		<div className={`screen-centered bg-gray ${transitioning ? 'transitioning' : ''}`}>
-			<h2 className={`title-sub ${transitioning ? 'fade-out' : ''}`}>选择目标角色</h2>
+			<h2 className={`title-sub ${transitioning ? 'fade-out' : ''}`}>选择体验角色</h2>
 			<div className={`flip-card-container ${transitioning ? 'transitioning' : ''}`}>
 				{CHARACTERS.map((c, index) => {
 					// 计算卡片位置索引：中间卡片为0，左边为-1，右边为1
