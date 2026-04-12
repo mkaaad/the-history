@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/RightSidebar.css';
 
 // 颜色映射函数
@@ -21,20 +21,61 @@ const getColorFromName = (colorName) => {
   return colorMap[colorName] || '#3b82f6';
 };
 
+// 检查是否为电脑端（宽度大于768px）
+const isDesktop = () => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth > 768;
+};
+
 const RightSidebar = ({ event }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isPinned, setIsPinned] = useState(false);
+  // 电脑端默认展开并固定，移动端默认折叠
+  const [isExpanded, setIsExpanded] = useState(isDesktop());
+  const [isPinned, setIsPinned] = useState(isDesktop());
+  const isPinnedRef = React.useRef(isPinned);
   
   // 获取颜色值
   const textColor = event?.color ? getColorFromName(event.color) : '#3b82f6';
 
+  // 同步isPinned到ref
+  useEffect(() => {
+    isPinnedRef.current = isPinned;
+  }, [isPinned]);
+
+  // 监听窗口大小变化
+  useEffect(() => {
+    const handleResize = () => {
+      const desktop = isDesktop();
+      // 如果未固定，根据窗口大小更新状态
+      if (!isPinnedRef.current) {
+        setIsExpanded(desktop);
+        setIsPinned(desktop);
+      } else {
+        // 如果已固定，确保展开
+        setIsExpanded(true);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    // 初始更新一次
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // 空依赖，使用ref获取最新状态
+
   // 切换固定状态
   const togglePin = (e) => {
     e.stopPropagation(); // 防止触发父元素的鼠标事件
-    setIsPinned(!isPinned);
+    const newPinned = !isPinned;
+    setIsPinned(newPinned);
+    isPinnedRef.current = newPinned; // 更新ref
     // 如果固定，确保展开
-    if (!isPinned) {
+    if (newPinned) {
       setIsExpanded(true);
+    } else {
+      // 如果取消固定，根据当前窗口大小决定是否展开
+      setIsExpanded(isDesktop());
     }
   };
 

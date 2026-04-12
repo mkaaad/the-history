@@ -193,3 +193,28 @@
 	border-left: 3px double var(--warning-color);
 	box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.08), 0 0 10px rgba(192, 149, 83, 0.3);
 }
+
+/* 响应式调整：移动端 */
+@media (max-width: 768px) {
+	.right-sidebar {
+		top: 10%;
+		height: 400px;
+	}
+	
+	.right-sidebar.expanded .sidebar-content {
+		width: 250px;
+	}
+	
+	.sidebar-panel {
+		padding: 1.5rem 1rem;
+	}
+	
+	.sidebar-panel h3 {
+		font-size: 1.3rem;
+	}
+	
+	.event-content {
+		font-size: 0.9rem;
+		line-height: 1.6;
+	}
+}

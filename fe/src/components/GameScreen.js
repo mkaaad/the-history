@@ -4,6 +4,11 @@ import RightSidebar from './RightSidebar';
 import '../styles/common.css';
 import '../styles/GameScreen.css';
 
+// 导入关键抉择数据
+import liBaiOptions from '../data/li_bai_option.json';
+import liQingzhaoOptions from '../data/li_qingzhao_option.json';
+import suShiOptions from '../data/su_shi_option.json';
+
 const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const mapRef = useRef(null);
 	const mapInstanceRef = useRef(null);
@@ -13,6 +18,24 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const iconsRef = useRef({normal: null, selected: null}); // 存储图标实例
 	const [currentEventIndex, setCurrentEventIndex] = useState(0);
 	const [isMapLoaded, setIsMapLoaded] = useState(false);
+	// 关键抉择状态
+	const [showChoice, setShowChoice] = useState(false);
+	const [currentChoice, setCurrentChoice] = useState(null);
+	const [choiceResult, setChoiceResult] = useState(null); // 'correct' 或 'wrong'
+	const [choiceResultContent, setChoiceResultContent] = useState('');
+	const [completedChoices, setCompletedChoices] = useState([]); // 已正确完成的抉择年份
+	const showChoiceRef = useRef(showChoice); // 用于在useEffect中访问最新的showChoice值
+	const choiceResultRef = useRef(choiceResult); // 用于在useEffect中访问最新的choiceResult值
+	
+	// 同步showChoice到ref
+	useEffect(() => {
+		showChoiceRef.current = showChoice;
+	}, [showChoice]);
+
+	// 同步choiceResult到ref
+	useEffect(() => {
+		choiceResultRef.current = choiceResult;
+	}, [choiceResult]);
 
 	// 1. 处理数据
 	const sortedEvents = useMemo(() => {
@@ -50,7 +73,108 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		return filtered;
 	}, [player.events]);
 
+	// 获取当前人物的关键抉择数据
+	const choiceData = useMemo(() => {
+		switch(player.name) {
+			case '李白':
+				return liBaiOptions;
+			case '李清照':
+				return liQingzhaoOptions;
+			case '苏轼':
+				return suShiOptions;
+			default:
+				return [];
+		}
+	}, [player.name]);
+
 	const eventPaths = useMemo(() => sortedEvents.map(e => [e.longitude, e.latitude]), [sortedEvents]);
+
+	// 处理抉择选择
+	const handleChoiceSelect = (optionIndex) => {
+		if (!currentChoice) return;
+		
+		const isCorrect = optionIndex === 1; // 第二个选项是正确的
+		
+		if (isCorrect) {
+			// 正确选择：显示与抉择年份相等的start_year的content
+			let correctContent = '';
+			// 查找年份等于当前抉择年份的事件
+			const sameYearEvent = sortedEvents.find(event => event.start_year === currentChoice.year);
+			if (sameYearEvent) {
+				correctContent = sameYearEvent.content || '';
+			} else {
+				// 如果没有对应年份的事件，显示当前事件的content作为后备
+				correctContent = sortedEvents[currentEventIndex].content || '';
+			}
+			
+			setChoiceResult('correct');
+			setChoiceResultContent(correctContent);
+			// 记录已完成的抉择
+			if (!completedChoices.includes(currentChoice.year)) {
+				setCompletedChoices(prev => [...prev, currentChoice.year]);
+			}
+		} else {
+			// 错误选择：显示end_content
+			setChoiceResult('wrong');
+			setChoiceResultContent(currentChoice.end_content || '');
+		}
+	};
+
+	// 重新选择
+	const handleRetryChoice = () => {
+		setChoiceResult(null);
+		setChoiceResultContent('');
+	};
+
+	// 继续游戏（正确选择后关闭抉择界面并前进到下一个节点）
+	const handleContinue = () => {
+		setShowChoice(false);
+		setCurrentChoice(null);
+		setChoiceResult(null);
+		setChoiceResultContent('');
+		
+		// 前进到下一个事件（如果存在）
+		if (currentEventIndex < sortedEvents.length - 1) {
+			setCurrentEventIndex(prev => prev + 1);
+		}
+	};
+
+	// 时间轴点击处理
+	const handleTimelineClick = (index) => {
+		if (showChoice) {
+			// 正在显示抉择，不允许切换事件
+			return;
+		}
+		setCurrentEventIndex(index);
+	};
+
+	// 检查当前事件是否有关键抉择
+	useEffect(() => {
+		if (!sortedEvents.length || !choiceData.length) return;
+		
+		const currentEvent = sortedEvents[currentEventIndex];
+		if (!currentEvent) return;
+		
+		// 查找与当前事件年份匹配的抉择
+		const matchingChoice = choiceData.find(choice => 
+			choice.name === player.name && choice.year === currentEvent.start_year
+		);
+		
+		// 如果找到了匹配的抉择且尚未完成
+		if (matchingChoice && !completedChoices.includes(matchingChoice.year)) {
+			setCurrentChoice(matchingChoice);
+			setShowChoice(true);
+			setChoiceResult(null);
+			setChoiceResultContent('');
+		} else {
+			// 没有抉择或已完成的抉择，确保隐藏抉择界面
+			// 但如果正在显示结果（choiceResult不为null），则不要隐藏，让用户看到结果
+			if (!choiceResultRef.current) {
+				setShowChoice(false);
+				setCurrentChoice(null);
+			}
+		}
+	}, [currentEventIndex, sortedEvents, choiceData, player.name, completedChoices]);
 
 
 
@@ -118,7 +242,11 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				zIndex: 10,
 				offset: new AMap.Pixel(-16, -16)
 			});
-			marker.on('click', () => setCurrentEventIndex(index));
+			marker.on('click', () => {
+				if (!showChoiceRef.current) {
+					setCurrentEventIndex(index);
+				}
+			});
 			marker.setMap(map);
 			return marker;
 		});
@@ -185,6 +313,51 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 			<RightSidebar event={sortedEvents[currentEventIndex]} />
 
+			{/* 关键抉择弹窗 */}
+			{showChoice && currentChoice && (
+				<div className="choice-modal-overlay">
+					<div className="choice-modal">
+						<div className="choice-modal-header">
+							<h3>关键抉择</h3>
+							<p className="choice-year">{currentChoice.year}年</p>
+						</div>
+						<div className="choice-modal-content">
+							<p className="choice-description">{currentChoice.description}</p>
+							
+							{!choiceResult ? (
+								<div className="choice-options">
+									{currentChoice.option.map((optionText, index) => (
+										<button
+											key={index}
+											className="choice-option"
+											onClick={() => handleChoiceSelect(index)}
+										>
+											{optionText}
+										</button>
+									))}
+								</div>
+							) : (
+								<div className="choice-result">
+									<div className={`result-content ${choiceResult === 'correct' ? 'correct' : 'wrong'}`}>
+										{choiceResultContent}
+									</div>
+									<div className="choice-result-actions">
+										{choiceResult === 'wrong' ? (
+											<button className="btn-chinese" onClick={handleRetryChoice}>
+												重新选择
+											</button>
+										) : (
+											<button className="btn-chinese" onClick={handleContinue}>
+												继续游戏
+											</button>
+										)}
+									</div>
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
+			)}
 
 
 			{/* 右上角返回按钮 */}
@@ -207,7 +380,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								src={idx === currentEventIndex ? (player.markerIconSelected || 'images/markers/point_selected.png') : (player.markerIcon || 'images/markers/point.png')}
 								alt="时间点"
 								className={`timeline-dot ${idx === currentEventIndex ? 'active' : ''}`}
-								onClick={() => setCurrentEventIndex(idx)}
+								onClick={() => handleTimelineClick(idx)}
 								style={{
 									left: `${(eventPositions[idx] * 100)}%`
 								}}
