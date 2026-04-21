@@ -48,7 +48,7 @@ be/vendor/         # Go vendor目录（如果使用）
 *.test
 
 # Docker相关
-.dockerignore
+# .dockerignore  # 注释掉，.dockerignore文件应该提交
 docker-compose.override.yml
 
 # 前端特定

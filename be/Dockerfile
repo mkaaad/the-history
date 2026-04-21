@@ -1,5 +1,5 @@
 # 使用官方Go镜像作为构建阶段
-FROM golang:1.25-alpine AS builder
+FROM golang:1.26-alpine AS builder
 
 # 安装必要的工具（git用于依赖获取）
 RUN apk add --no-cache git
