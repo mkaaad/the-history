@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useMemo} from 'react';
+import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import RightSidebar from './RightSidebar';
 import '../styles/common.css';
@@ -18,14 +18,20 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const iconsRef = useRef({normal: null, selected: null}); // 存储图标实例
 	const [currentEventIndex, setCurrentEventIndex] = useState(0);
 	const [isMapLoaded, setIsMapLoaded] = useState(false);
+	// 画线状态
+	const [linePath, setLinePath] = useState(null); // 当前显示的弧线路径
 	// 关键抉择状态
 	const [showChoice, setShowChoice] = useState(false);
 	const [currentChoice, setCurrentChoice] = useState(null);
 	const [choiceResult, setChoiceResult] = useState(null); // 'correct' 或 'wrong'
 	const [choiceResultContent, setChoiceResultContent] = useState('');
 	const [completedChoices, setCompletedChoices] = useState([]); // 已正确完成的抉择年份
+	const [pendingChoiceIndex, setPendingChoiceIndex] = useState(-1); // 等待处理的抉择事件索引
 	const showChoiceRef = useRef(showChoice); // 用于在useEffect中访问最新的showChoice值
 	const choiceResultRef = useRef(choiceResult); // 用于在useEffect中访问最新的choiceResult值
+	// 诗作对话框状态
+	const [showPoemDialog, setShowPoemDialog] = useState(false);
+	const [poemText, setPoemText] = useState('');
 	
 	// 同步showChoice到ref
 	useEffect(() => {
@@ -89,6 +95,95 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 	const eventPaths = useMemo(() => sortedEvents.map(e => [e.longitude, e.latitude]), [sortedEvents]);
 
+	// 计算弧形箭头路径（二次贝塞尔曲线，返回多个点构成弧线）
+	const computeCurvePath = (start, end) => {
+		// 验证输入坐标
+		const [lng1, lat1] = start;
+		const [lng2, lat2] = end;
+		if (!Number.isFinite(lng1) || !Number.isFinite(lat1) || !Number.isFinite(lng2) || !Number.isFinite(lat2)) {
+			console.warn('Invalid coordinates in computeCurvePath', start, end);
+			return null;
+		}
+		// 计算垂直于两点连线的方向向量
+		const dx = lng2 - lng1;
+		const dy = lat2 - lat1;
+		const length = Math.sqrt(dx * dx + dy * dy);
+		// 防止除零错误
+		if (length < 1e-6) {
+			// 两点重合或非常接近，不画线
+			return null;
+		}
+		// 垂直单位向量（旋转90度）
+		const perpX = -dy / length;
+		const perpY = dx / length;
+		// 控制点偏移距离（弧高），取两点距离的0.3倍
+		const offset = length * 0.3;
+		// 二次贝塞尔曲线控制点（中点偏移）
+		const controlPoint = [(lng1 + lng2) / 2 + perpX * offset, (lat1 + lat2) / 2 + perpY * offset];
+		// 验证控制点坐标
+		if (!Number.isFinite(controlPoint[0]) || !Number.isFinite(controlPoint[1])) {
+			console.warn('Invalid control point computed', controlPoint);
+			return [start, end];
+		}
+		// 生成弧线上的点（10个点）
+		const points = [];
+		const steps = 10;
+		for (let i = 0; i <= steps; i++) {
+			const t = i / steps;
+			const u = 1 - t;
+			// 二次贝塞尔曲线公式：B(t) = (1-t)² * P0 + 2*(1-t)*t * P1 + t² * P2
+			const lng = u * u * lng1 + 2 * u * t * controlPoint[0] + t * t * lng2;
+			const lat = u * u * lat1 + 2 * u * t * controlPoint[1] + t * t * lat2;
+			points.push([lng, lat]);
+		}
+		return points;
+	};
+
+	// 根据事件年份获取年龄对应的头像
+	const getAvatarForEvent = (event) => {
+		if (!event || !player.birthYear) return player.avatar || player.image;
+		
+		const age = event.start_year - player.birthYear;
+		
+		// 处理负数年龄（事件年份早于出生年份）
+		if (age < 0 || age <= 30) {
+			return player.avatarYoung || player.avatar || player.image;
+		} else if (age <= 50) {
+			return player.avatarMiddle || player.avatar || player.image;
+		} else {
+			return player.avatarOld || player.avatar || player.image;
+		}
+	};
+
+	// 检查当前事件是否有诗作并设置对话框
+	const checkAndSetPoem = useCallback(() => {
+		if (!sortedEvents.length || currentEventIndex < 0) {
+			setShowPoemDialog(false);
+			setPoemText('');
+			return;
+		}
+		
+		const currentEvent = sortedEvents[currentEventIndex];
+		if (!currentEvent || !currentEvent.representative_works || currentEvent.representative_works.length === 0) {
+			setShowPoemDialog(false);
+			setPoemText('');
+			return;
+		}
+		
+		// 获取第一个诗作
+		const firstWork = currentEvent.representative_works[0];
+		const text = (firstWork.title ? firstWork.title + '\n' : '') + (firstWork.content || '');
+		setPoemText(text);
+		setShowPoemDialog(true);
+	}, [currentEventIndex, sortedEvents]);
+
+	// 当事件变化时更新诗作对话框
+	useEffect(() => {
+		checkAndSetPoem();
+	}, [checkAndSetPoem]);
+
+
+
 	// 处理抉择选择
 	const handleChoiceSelect = (optionIndex) => {
 		if (!currentChoice) return;
@@ -133,9 +228,23 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		setChoiceResult(null);
 		setChoiceResultContent('');
 		
-		// 前进到下一个事件（如果存在）
-		if (currentEventIndex < sortedEvents.length - 1) {
-			setCurrentEventIndex(prev => prev + 1);
+		// 如果有等待处理的抉择索引，前进到该事件
+		if (pendingChoiceIndex !== -1) {
+			const targetIndex = pendingChoiceIndex;
+			const currentEvent = sortedEvents[currentEventIndex];
+			const targetEvent = sortedEvents[targetIndex];
+			if (currentEvent && targetEvent) {
+				const curvePath = computeCurvePath(
+					[currentEvent.longitude, currentEvent.latitude],
+					[targetEvent.longitude, targetEvent.latitude]
+				);
+				setLinePath(curvePath);
+			}
+			setCurrentEventIndex(targetIndex);
+			setPendingChoiceIndex(-1);
+		} else if (currentEventIndex < sortedEvents.length - 1) {
+			// 没有等待的抉择，正常前进
+			handleNext();
 		}
 	};
 
@@ -145,7 +254,59 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			// 正在显示抉择，不允许切换事件
 			return;
 		}
+		setLinePath(null);
 		setCurrentEventIndex(index);
+		setPendingChoiceIndex(-1); // 清除等待的抉择
+	};
+
+	// 下一步按钮处理（绘制弧形箭头）
+	const handleNext = () => {
+		if (currentEventIndex < sortedEvents.length - 1) {
+			const nextIndex = currentEventIndex + 1;
+			const nextEvent = sortedEvents[nextIndex];
+			
+			// 检查下一个事件是否有未完成的抉择
+			const hasUncompletedChoice = () => {
+				if (!nextEvent || !choiceData.length) return false;
+				const matchingChoice = choiceData.find(choice => 
+					choice.name === player.name && choice.year === nextEvent.start_year
+				);
+				return matchingChoice && !completedChoices.includes(matchingChoice.year);
+			};
+			
+			if (hasUncompletedChoice()) {
+				// 下一个事件有未完成的抉择，显示抉择但不前进
+				const matchingChoice = choiceData.find(choice => 
+					choice.name === player.name && choice.year === nextEvent.start_year
+				);
+				setCurrentChoice(matchingChoice);
+				setShowChoice(true);
+				setChoiceResult(null);
+				setChoiceResultContent('');
+				setPendingChoiceIndex(nextIndex);
+			} else {
+				// 没有抉择，正常前进并绘制弧线
+				const currentEvent = sortedEvents[currentEventIndex];
+				if (currentEvent && nextEvent) {
+					const curvePath = computeCurvePath(
+						[currentEvent.longitude, currentEvent.latitude],
+						[nextEvent.longitude, nextEvent.latitude]
+					);
+					setLinePath(curvePath);
+				}
+				setCurrentEventIndex(nextIndex);
+				setPendingChoiceIndex(-1); // 清除等待的抉择
+			}
+		}
+	};
+
+	// 上一步按钮处理（清除线）
+	const handlePrev = () => {
+		if (currentEventIndex > 0) {
+			setLinePath(null);
+			setCurrentEventIndex(prev => prev - 1);
+			setPendingChoiceIndex(-1); // 清除等待的抉择
+		}
 	};
 
 	// 检查当前事件是否有关键抉择
@@ -210,17 +371,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		markersRef.current.forEach(m => m.setMap(null));
 		markersRef.current = [];
 
-		// 绘制轨迹线 (全生命周期只在这里绘制一次)
-		const polyline = new AMap.Polyline({
-			path: eventPaths,
-			showDir: true,
-			strokeColor: "#8E2323",
-			strokeOpacity: 0.6,
-			strokeWeight: 5,
-			lineJoin: 'round'
-		});
-		map.add(polyline);
-		polylineRef.current = polyline;
+		// 轨迹线将由单独的effect根据linePath绘制（弧形箭头）
 
 		// 初始化所有点标记（使用角色特定的PNG图标）
 		iconsRef.current.normal = new AMap.Icon({
@@ -244,6 +395,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			});
 			marker.on('click', () => {
 				if (!showChoiceRef.current) {
+					setLinePath(null);
 					setCurrentEventIndex(index);
 				}
 			});
@@ -256,6 +408,26 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		if (newMarkers.length > 0) map.setFitView(null, false, [60, 60, 60, 60]);
 
 	}, [isMapLoaded, sortedEvents, eventPaths, player]);
+
+	// 绘制弧形箭头（根据linePath）
+	useEffect(() => {
+		if (!isMapLoaded || !linePath) return;
+		const AMap = amapRef.current;
+		const map = mapInstanceRef.current;
+		// 清除旧的曲线
+		if (polylineRef.current) polylineRef.current.setMap(null);
+		// 创建弧线（使用Polyline）
+		const curve = new AMap.Polyline({
+			path: linePath,
+			showDir: true,
+			strokeColor: "#8E2323",
+			strokeOpacity: 0.6,
+			strokeWeight: 5,
+			lineJoin: 'round'
+		});
+		curve.setMap(map);
+		polylineRef.current = curve;
+	}, [isMapLoaded, linePath]);
 
 	// 4. 处理点切换逻辑 (更新图标和视角)
 	useEffect(() => {
@@ -359,6 +531,74 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				</div>
 			)}
 
+			{/* 左上角头像和角色信息 */}
+			<div className="overlay-top-left" style={{position: 'absolute', zIndex: 999, padding: '0.8rem 1.2rem', background: 'rgba(255, 252, 240, 0.9)', border: '1px solid #c09553', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.8rem'}}>
+				<div style={{position: 'relative', display: 'flex', alignItems: 'center', gap: '0.8rem'}}>
+					<img src={getAvatarForEvent(sortedEvents[currentEventIndex])} alt={player.name} className="avatar" style={{width: '3rem', height: '3rem', objectFit: 'cover'}} />
+					<div style={{display: 'flex', flexDirection: 'column'}}>
+						<div className="character-name" style={{fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-color)'}}>{player.name}</div>
+						<div className="character-era" style={{fontSize: '0.9rem', color: '#666'}}>{player.era}</div>
+					</div>
+					
+					{/* 诗作对话框 */}
+					{showPoemDialog && (
+						<div style={{
+							position: 'absolute',
+							left: 'calc(100% + 10px)',
+							top: 0,
+							width: '300px',
+							background: 'rgba(255, 252, 240, 0.95)',
+							border: '2px solid #c09553',
+							borderRadius: '12px',
+							padding: '12px',
+							boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
+							fontFamily: '"STSong", "SimSun", serif',
+							fontSize: '0.95rem',
+							lineHeight: 1.6,
+							color: '#333',
+							zIndex: 1000
+						}}>
+							{/* 对话框小三角 */}
+							<div style={{
+								position: 'absolute',
+								left: '-10px',
+								top: '20px',
+								width: 0,
+								height: 0,
+								borderTop: '10px solid transparent',
+								borderBottom: '10px solid transparent',
+								borderRight: '10px solid #c09553'
+							}} />
+							<div style={{
+								position: 'absolute',
+								left: '-8px',
+								top: '20px',
+								width: 0,
+								height: 0,
+								borderTop: '10px solid transparent',
+								borderBottom: '10px solid transparent',
+								borderRight: '10px solid rgba(255, 252, 240, 0.95)'
+							}} />
+							
+							<div style={{
+								fontWeight: 'bold',
+								color: '#8E2323',
+								marginBottom: '8px',
+								borderBottom: '1px solid #c09553',
+								paddingBottom: '4px'
+							}}>
+								诗作
+							</div>
+							<div style={{
+								whiteSpace: 'pre-wrap',
+								minHeight: '60px'
+							}}>
+								{poemText}
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
 
 			{/* 右上角返回按钮 */}
 			<button className="btn-chinese btn-top-right" onClick={onBackToSelect}>
@@ -392,14 +632,14 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				<div className="btn-group">
 					<button
 						className="nav-btn"
-						onClick={() => setCurrentEventIndex(i => Math.max(0, i - 1))}
+						onClick={handlePrev}
 						disabled={currentEventIndex === 0}
 					>
 						上一步
 					</button>
 					<button
 						className="nav-btn"
-						onClick={() => setCurrentEventIndex(i => Math.min(sortedEvents.length - 1, i + 1))}
+						onClick={handleNext}
 						disabled={currentEventIndex === sortedEvents.length - 1}
 					>
 						下一步

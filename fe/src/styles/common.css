@@ -272,6 +272,12 @@ body {
 	animation: inkSpread 1.2s ease-out forwards;
 }
 
+/* 光标闪烁动画 */
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
 /* 卡片容器横向排列 */
 .card-container {
 	display: flex;
