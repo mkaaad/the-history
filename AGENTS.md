@@ -4,11 +4,11 @@ This document provides essential information for AI agents working on this codeb
 
 ## Project Overview
 
-- **Type**: React single-page application (SPA) with interactive map visualization
-- **Purpose**: Interactive timeline map showcasing historical figures (李白, 李清照, 苏轼) with biographical events
+- **Type**: Full-stack web application with interactive map and AI dialogue
+- **Purpose**: Interactive timeline map showcasing historical figures (李白, 李清照, 苏轼) with biographical events and AI-powered conversation
 - **Frontend**: React 19, Create React App, AMap (高德地图) for Chinese maps
-- **Backend**: None (static frontend only)
-- **Deployment**: Docker + Nginx, GitHub Pages via GitHub Actions
+- **Backend**: Go + Gin, DeepSeek API integration for AI dialogue
+- **Deployment**: Docker + Nginx, GitHub Pages via GitHub Actions (frontend), standalone backend server
 - **Language**: Chinese comments and UI text, English variable names
 
 ## Essential Commands
@@ -21,6 +21,15 @@ npm start            # Start dev server at http://localhost:3000
 npm run build        # Build production bundle
 npm test             # Run tests (Jest + React Testing Library)
 npm run eject        # Eject from Create React App (not recommended)
+```
+
+### Backend Development
+```bash
+cd be
+go mod tidy          # Install Go dependencies
+go run main.go       # Start backend server at http://localhost:8080
+# or use the startup script:
+./start.sh           # Interactive startup with environment check
 ```
 
 ### Docker Deployment

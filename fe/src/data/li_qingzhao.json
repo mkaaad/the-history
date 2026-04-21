@@ -9,10 +9,8 @@
     "latitude": 36.68333,
     "color": "蓝色",
     "content": "1084年生于齐州章丘明水（今山东济南章丘区），出身书香名门，父亲李格非为“苏门后四学士”之一，母亲王氏是状元王拱辰孙女，善属文；相传出生时异光满室，自幼展露才华，出生年份学术界多以1084年为确。",
-    "ancient_location": "齐州章丘",
-    "modern_location": "山东济南章丘",
-    "representative_work": "无（初生）",
-    "poem_content": "无（初生）",
+    "ancient_place": "齐州章丘",
+    "modern_place": "山东济南章丘",
     "relationships": [
       {
         "name": "李格非",
@@ -24,7 +22,8 @@
         "relation": "母亲",
         "description": "状元王拱辰孙女，知书达理"
       }
-    ]
+    ],
+    "representative_works": []
   },
   {
     "name": "李清照",
@@ -36,10 +35,8 @@
     "latitude": 35.33333,
     "color": "蓝色",
     "content": "五岁随父母迁居汴京，父亲任太学正，居所名为“有竹堂”，母亲教其读书识字，家中常往来晁补之、张耒等苏门文人，李清照耳濡目染，奠定深厚文学基础。",
-    "ancient_location": "汴京",
-    "modern_location": "河南开封",
-    "representative_work": "无（幼年）",
-    "poem_content": "无（幼年）",
+    "ancient_place": "汴京",
+    "modern_place": "河南开封",
     "relationships": [
       {
         "name": "李格非",
@@ -51,7 +48,8 @@
         "relation": "父辈恩师",
         "description": "元祐党人领袖，李格非的老师"
       }
-    ]
+    ],
+    "representative_works": []
   },
   {
     "name": "李清照",
@@ -63,10 +61,8 @@
     "latitude": 35.33333,
     "color": "蓝色",
     "content": "十六岁由原籍赴汴京，开启“学诗三十年”历程，结识苏门四学士之一晁补之；创作《如梦令·昨夜雨疏风骤》，“绿肥红瘦”一句名动京师，广受文士赞赏。",
-    "ancient_location": "汴京",
-    "modern_location": "河南开封",
-    "representative_work": "《点绛唇·蹴罢秋千》",
-    "poem_content": "蹴罢秋千，起来慵整纤纤手。露浓花瘦，薄汗轻衣透。见客入来，袜刬金钗溜。和羞走，倚门回首，却把青梅嗅。",
+    "ancient_place": "汴京",
+    "modern_place": "河南开封",
     "relationships": [
       {
         "name": "黄庭坚",
@@ -77,6 +73,12 @@
         "name": "晁补之",
         "relation": "父辈好友",
         "description": "苏门学士，常与李格非唱和"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《点绛唇·蹴罢秋千》",
+        "content": "蹴罢秋千，起来慵整纤纤手。露浓花瘦，薄汗轻衣透。见客入来，袜刬金钗溜。和羞走，倚门回首，却把青梅嗅。"
       }
     ]
   },
@@ -90,15 +92,19 @@
     "latitude": 35.33333,
     "color": "红色",
     "content": "十七岁作《浯溪中兴颂诗和张文潜》二首，以少女身份议论国事，直指帝王荒淫误国，眼界超越同辈，士林震动。",
-    "ancient_location": "汴京",
-    "modern_location": "河南开封",
-    "representative_work": "《浣溪沙·绣面芙蓉一笑开》",
-    "poem_content": "绣面芙蓉一笑开，斜飞宝鸭衬香腮。眼波才动被人猜。一面风情深有韵，半笺娇恨寄幽怀。月移花影约重来。",
+    "ancient_place": "汴京",
+    "modern_place": "河南开封",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "伴侣",
         "description": "太学生，初相识，宰相赵挺之第三子"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《浣溪沙·绣面芙蓉一笑开》",
+        "content": "绣面芙蓉一笑开，斜飞宝鸭衬香腮。眼波才动被人猜。一面风情深有韵，半笺娇恨寄幽怀。月移花影约重来。"
       }
     ]
   },
@@ -112,10 +118,8 @@
     "latitude": 35.33333,
     "color": "红色",
     "content": "建中靖国元年，与太学生赵明诚在汴京成婚，二人志趣相投，婚后共赏金石书画，留下“赌书泼茶”的千古佳话，立下搜集天下古文奇字的志向。",
-    "ancient_location": "汴京",
-    "modern_location": "河南开封",
-    "representative_work": "《减字木兰花·卖花担上》",
-    "poem_content": "卖花担上。买得一枝春欲放。泪染轻匀。犹带彤霞晓露痕。怕郎猜道。奴面不如花面好。云鬓斜簪。徒要教郎比并看。",
+    "ancient_place": "汴京",
+    "modern_place": "河南开封",
     "relationships": [
       {
         "name": "赵明诚",
@@ -132,6 +136,12 @@
         "relation": "公公",
         "description": "宰相，与李格非政见对立"
       }
+    ],
+    "representative_works": [
+      {
+        "title": "《减字木兰花·卖花担上》",
+        "content": "卖花担上。买得一枝春欲放。泪染轻匀。犹带彤霞晓露痕。怕郎猜道。奴面不如花面好。云鬓斜簪。徒要教郎比并看。"
+      }
     ]
   },
   {
@@ -144,10 +154,8 @@
     "latitude": 35.33333,
     "color": "红色",
     "content": "崇宁元年，父亲李格非被列入元祐党籍罢官，李清照上诗公公赵挺之救父，写下“何况人间父子情”，未获援手；后因党禁被迫离京，返回原籍，夫妻分离。",
-    "ancient_location": "汴京",
-    "modern_location": "河南开封",
-    "representative_work": "无",
-    "poem_content": "无",
+    "ancient_place": "汴京",
+    "modern_place": "河南开封",
     "relationships": [
       {
         "name": "蔡京",
@@ -159,7 +167,8 @@
         "relation": "父亲",
         "description": "被列为元祐党人，罢官遣返原籍"
       }
-    ]
+    ],
+    "representative_works": []
   },
   {
     "name": "李清照",
@@ -171,15 +180,19 @@
     "latitude": 37.13333,
     "color": "灰色",
     "content": "受党祸松紧影响，在原籍与汴京之间往返奔波，期间献诗抒发对翁舅见死不救的愤懑，历经离别之苦。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《浣溪沙·小院闲窗春色深》",
-    "poem_content": "小院闲窗春色深，重帘未卷影沉沉。倚楼无语理瑶琴。远岫出云催薄暮，细风吹雨弄轻阴。梨花欲谢恐难禁。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "新婚不久，随夫屏居青州，共赏金石书画"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《浣溪沙·小院闲窗春色深》",
+        "content": "小院闲窗春色深，重帘未卷影沉沉。倚楼无语理瑶琴。远岫出云催薄暮，细风吹雨弄轻阴。梨花欲谢恐难禁。"
       }
     ]
   },
@@ -193,15 +206,19 @@
     "latitude": 37.13333,
     "color": "灰色",
     "content": "崇宁五年大赦天下，元祐党禁解除，李清照得以返回汴京，与赵明诚团聚，结束分离岁月。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《如梦令·昨夜雨疏风骤》",
-    "poem_content": "昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "夫妻闲居，赌书泼茶，共同治学"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《如梦令·昨夜雨疏风骤》",
+        "content": "昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。"
       }
     ]
   },
@@ -215,15 +232,19 @@
     "latitude": 37.13333,
     "color": "蓝色",
     "content": "大观元年，公公赵挺之病逝，遭蔡京诬陷追夺官职，赵明诚兄弟失官，李清照随夫返回青州故里屏居；取陶渊明意自号“易安居士”。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《诉衷情·夜来沉醉卸妆迟》",
-    "poem_content": "夜来沉醉卸妆迟，梅萼插残枝。酒醒熏破春睡，梦远不成归。人悄悄，月依依，翠帘垂。更挼残蕊，更捻余香，更得些时。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "赵挺之",
         "relation": "公公",
         "description": "赵明诚父病逝，赵家遭蔡京构陷"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《诉衷情·夜来沉醉卸妆迟》",
+        "content": "夜来沉醉卸妆迟，梅萼插残枝。酒醒熏破春睡，梦远不成归。人悄悄，月依依，翠帘垂。更挼残蕊，更捻余香，更得些时。"
       }
     ]
   },
@@ -237,15 +258,19 @@
     "latitude": 37.13333,
     "color": "灰色",
     "content": "屏居青州十余载，与赵明诚专心搜集整理金石书画，共同校勘著录，助力赵明诚完成《金石录》初稿，是二人学术与生活的黄金时期。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《如梦令·常记溪亭日暮》",
-    "poem_content": "常记溪亭日暮，沉醉不知归路。兴尽晚回舟，误入藕花深处。争渡，争渡，惊起一滩鸥鹭。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "隐居避世，潜心搜集金石"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《如梦令·常记溪亭日暮》",
+        "content": "常记溪亭日暮，沉醉不知归路。兴尽晚回舟，误入藕花深处。争渡，争渡，惊起一滩鸥鹭。"
       }
     ]
   },
@@ -259,15 +284,19 @@
     "latitude": 37.3,
     "color": "蓝色",
     "content": "政和末年赵明诚起复为官，夫妇分离；1121年李清照随夫宦居莱州，后转淄州，继续参与金石研究，创作《蝶恋花·晚止昌乐馆寄姊妹》等作品。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《一剪梅·红藕香残玉簟秋》",
-    "poem_content": "红藕香残玉簟秋。轻解罗裳，独上兰舟。云中谁寄锦书来？雁字回时，月满西楼。花自飘零水自流。一种相思，两处闲愁。此情无计可消除，才下眉头，却上心头。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "外出寻访金石，夫妻暂别，相思之苦"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《一剪梅·红藕香残玉簟秋》",
+        "content": "红藕香残玉簟秋。轻解罗裳，独上兰舟。云中谁寄锦书来？雁字回时，月满西楼。花自飘零水自流。一种相思，两处闲愁。此情无计可消除，才下眉头，却上心头。"
       }
     ]
   },
@@ -281,10 +310,8 @@
     "latitude": 36.68333,
     "color": "蓝色",
     "content": "靖康元年，金兵大举进攻中原，围困汴京，国家危亡，李清照忧心忡忡，家国忧患渐起。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《渔家傲·天接云涛连晓雾》",
-    "poem_content": "天接云涛连晓雾，星河欲转千帆舞。仿佛梦魂归帝所。闻天语，殷勤问我归何处。我报路长嗟日暮，学诗谩有惊人句。九万里风鹏正举。风休住，蓬舟吹取三山去！",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "宋徽宗",
@@ -295,6 +322,12 @@
         "name": "宋钦宗",
         "relation": "皇帝",
         "description": "靖康之乱爆发在即"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《渔家傲·天接云涛连晓雾》",
+        "content": "天接云涛连晓雾，星河欲转千帆舞。仿佛梦魂归帝所。闻天语，殷勤问我归何处。我报路长嗟日暮，学诗谩有惊人句。九万里风鹏正举。风休住，蓬舟吹取三山去！"
       }
     ]
   },
@@ -308,10 +341,8 @@
     "latitude": 35.33333,
     "color": "灰色",
     "content": "靖康二年北宋灭亡，李清照忍痛割舍藏品，仅带15车文物南渡，青州剩余藏品尽数毁于战火；历经兵乱，艰难押运文物前往建康与赵明诚会合。",
-    "ancient_location": "青州",
-    "modern_location": "山东青州",
-    "representative_work": "《蝶恋花·暖雨晴风初破冻》",
-    "poem_content": "暖雨晴风初破冻，柳眼梅腮，已觉春心动。酒意诗情谁与共？泪融残粉花钿重。乍试夹衫金缕缝，山枕斜欹，枕损钗头凤。独抱浓愁无好梦，夜阑犹剪灯花弄。",
+    "ancient_place": "青州",
+    "modern_place": "山东青州",
     "relationships": [
       {
         "name": "宋钦宗",
@@ -322,6 +353,12 @@
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "夫妻分隔，仓皇南渡"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《蝶恋花·暖雨晴风初破冻》",
+        "content": "暖雨晴风初破冻，柳眼梅腮，已觉春心动。酒意诗情谁与共？泪融残粉花钿重。乍试夹衫金缕缝，山枕斜欹，枕损钗头凤。独抱浓愁无好梦，夜阑犹剪灯花弄。"
       }
     ]
   },
@@ -335,15 +372,19 @@
     "latitude": 32.05,
     "color": "黑色",
     "content": "建炎二年春抵达建康，不满南宋朝廷逃跑政策，写下诗句讽刺朝政，常冒雪登楼北望，以诗词抒发忧国之思。",
-    "ancient_location": "江宁",
-    "modern_location": "江苏南京",
-    "representative_work": "《临江仙·庭院深深深几许》",
-    "poem_content": "庭院深深深几许，云窗雾阁春迟。为谁憔悴损芳姿。夜来清梦好，应是发南枝。玉瘦檀轻无限恨，南楼羌管休吹。浓香吹尽有谁知。暖风迟日也，别到杏花肥。",
+    "ancient_place": "江宁",
+    "modern_place": "江苏南京",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "任江宁知府，夫妻短暂团聚"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《临江仙·庭院深深深几许》",
+        "content": "庭院深深深几许，云窗雾阁春迟。为谁憔悴损芳姿。夜来清梦好，应是发南枝。玉瘦檀轻无限恨，南楼羌管休吹。浓香吹尽有谁知。暖风迟日也，别到杏花肥。"
       }
     ]
   },
@@ -357,15 +398,19 @@
     "latitude": 32.06667,
     "color": "灰色",
     "content": "建炎三年，建康叛乱，赵明诚缒城逃亡，夫妻关系破裂；途经乌江作《夏日绝句》明志；八月赵明诚病逝，李清照悲痛欲绝，为夫撰写祭文。",
-    "ancient_location": "建康",
-    "modern_location": "江苏南京",
-    "representative_work": "《醉花阴·薄雾浓云愁永昼》",
-    "poem_content": "薄雾浓云愁永昼，瑞脑销金兽。佳节又重阳，玉枕纱厨，半夜凉初透。东篱把酒黄昏后，有暗香盈袖。莫道不销魂，帘卷西风，人比黄花瘦。",
+    "ancient_place": "建康",
+    "modern_place": "江苏南京",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "丈夫",
         "description": "罢官后病逝，李清照中年丧夫，悲痛欲绝"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《醉花阴·薄雾浓云愁永昼》",
+        "content": "薄雾浓云愁永昼，瑞脑销金兽。佳节又重阳，玉枕纱厨，半夜凉初透。东篱把酒黄昏后，有暗香盈袖。莫道不销魂，帘卷西风，人比黄花瘦。"
       }
     ]
   },
@@ -379,15 +424,19 @@
     "latitude": 31.1,
     "color": "黑色",
     "content": "建炎四年，孤身携带文物逃亡，辗转建康、越州、明州、台州、温州等地；被诬陷通敌，捐文物表忠心却遭豪夺，文物开始大量散失。",
-    "ancient_location": "越州",
-    "modern_location": "浙江绍兴",
-    "representative_work": "《武陵春·风住尘香花已尽》",
-    "poem_content": "风住尘香花已尽，日晚倦梳头。物是人非事事休，欲语泪先流。闻说双溪春尚好，也拟泛轻舟。只恐双溪舴艋舟，载不动许多愁。",
+    "ancient_place": "越州",
+    "modern_place": "浙江绍兴",
     "relationships": [
       {
         "name": "宋高宗赵构",
         "relation": "皇帝",
         "description": "一路南逃避难"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《武陵春·风住尘香花已尽》",
+        "content": "风住尘香花已尽，日晚倦梳头。物是人非事事休，欲语泪先流。闻说双溪春尚好，也拟泛轻舟。只恐双溪舴艋舟，载不动许多愁。"
       }
     ]
   },
@@ -401,15 +450,19 @@
     "latitude": 30.65,
     "color": "黑色",
     "content": "绍兴元年，在越州借住时，卧榻下五筐文物被人穴壁盗走，仅重金赎回少量，其余被低价侵占，文物散失惨重，贫病交加仍坚守整理《金石录》。",
-    "ancient_location": "越州",
-    "modern_location": "浙江绍兴",
-    "representative_work": "《清平乐·年年雪里》",
-    "poem_content": "年年雪里，常插梅花醉。挼尽梅花无好意，赢得满衣清泪。今年海角天涯，萧萧两鬓生华。看取晚来风势，故应难看梅花。",
+    "ancient_place": "越州",
+    "modern_place": "浙江绍兴",
     "relationships": [
       {
         "name": "盗贼",
         "relation": "窃贼",
         "description": "劫掠毕生收藏的金石书画"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《清平乐·年年雪里》",
+        "content": "年年雪里，常插梅花醉。挼尽梅花无好意，赢得满衣清泪。今年海角天涯，萧萧两鬓生华。看取晚来风势，故应难看梅花。"
       }
     ]
   },
@@ -423,15 +476,19 @@
     "latitude": 30.46667,
     "color": "黑色",
     "content": "绍兴二年，再嫁张汝舟，对方图谋文物，婚后施暴；李清照揭发其履历造假，按宋律身陷囹圄九日，经綦崇礼营救获释，张汝舟被除名编管。",
-    "ancient_location": "温州",
-    "modern_location": "浙江温州",
-    "representative_work": "《孤雁儿·藤床纸帐朝眠起》",
-    "poem_content": "藤床纸帐朝眠起，说不尽无佳思。沉香断续玉炉寒，伴我情怀如水。笛声三弄，梅心惊破，多少春情意。小风疏雨萧萧地，又催下千行泪。吹箫人去玉楼空，肠断与谁同倚。一枝折得，人间天上，没个人堪寄。",
+    "ancient_place": "温州",
+    "modern_place": "浙江温州",
     "relationships": [
       {
         "name": "张汝舟",
         "relation": "第二任丈夫",
         "description": "家暴贪财，李清照与其对簿公堂"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《孤雁儿·藤床纸帐朝眠起》",
+        "content": "藤床纸帐朝眠起，说不尽无佳思。沉香断续玉炉寒，伴我情怀如水。笛声三弄，梅心惊破，多少春情意。小风疏雨萧萧地，又催下千行泪。吹箫人去玉楼空，肠断与谁同倚。一枝折得，人间天上，没个人堪寄。"
       }
     ]
   },
@@ -445,15 +502,19 @@
     "latitude": 30.46667,
     "color": "灰色",
     "content": "出狱后身心俱疲，未消沉颓废，继续整理校勘《金石录》，上书朝廷捐献古器物表忠心，重拾学术信念。",
-    "ancient_location": "杭州",
-    "modern_location": "浙江杭州",
-    "representative_work": "《南歌子·天上星河转》",
-    "poem_content": "天上星河转，人间帘幕垂。凉生枕簟泪痕滋。起解罗衣聊问夜何其。翠贴莲蓬小，金销藕叶稀。旧时天气旧时衣。只有情怀不似旧家时！",
+    "ancient_place": "杭州",
+    "modern_place": "浙江杭州",
     "relationships": [
       {
         "name": "亲友",
         "relation": "疏远",
         "description": "亲友疏远，独居无依，生活困顿"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《南歌子·天上星河转》",
+        "content": "天上星河转，人间帘幕垂。凉生枕簟泪痕滋。起解罗衣聊问夜何其。翠贴莲蓬小，金销藕叶稀。旧时天气旧时衣。只有情怀不似旧家时！"
       }
     ]
   },
@@ -467,15 +528,19 @@
     "latitude": 29.08333,
     "color": "灰色",
     "content": "绍兴四年，避金兵南侵至金华，登八咏楼作《题八咏楼》，于双溪畔作《武陵春》，写尽家国之愁与晚年悲凉。",
-    "ancient_location": "金华",
-    "modern_location": "浙江金华",
-    "representative_work": "散文《金石录后序》",
-    "poem_content": "（散文名篇，记述与赵明诚搜集金石书画的艰辛与乐趣，以及战乱中散失的悲痛）",
+    "ancient_place": "金华",
+    "modern_place": "浙江金华",
     "relationships": [
       {
         "name": "赵明诚",
         "relation": "亡夫",
         "description": "追忆亡夫赵明诚，整理其遗作"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "散文《金石录后序》",
+        "content": "（散文名篇，记述与赵明诚搜集金石书画的艰辛与乐趣，以及战乱中散失的悲痛）"
       }
     ]
   },
@@ -489,15 +554,19 @@
     "latitude": 30.46667,
     "color": "灰色",
     "content": "辗转杭州、越州、金华等地，以整理《金石录》为精神支柱，完成亡夫遗稿校勘补订，撰写《金石录后序》，追忆生平与家国变故。",
-    "ancient_location": "金华",
-    "modern_location": "浙江金华",
-    "representative_work": "《声声慢·寻寻觅觅》",
-    "poem_content": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。乍暖还寒时候，最难将息。三杯两盏淡酒，怎敌他、晚来风急！雁过也，正伤心，却是旧时相识。满地黄花堆积，憔悴损，如今有谁堪摘？守着窗儿，独自怎生得黑！梧桐更兼细雨，到黄昏、点点滴滴。这次第，怎一个愁字了得！",
+    "ancient_place": "金华",
+    "modern_place": "浙江金华",
     "relationships": [
       {
         "name": "无",
         "relation": "孤苦",
         "description": "孤苦终老，无儿无女，晚景凄凉"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《声声慢·寻寻觅觅》",
+        "content": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。乍暖还寒时候，最难将息。三杯两盏淡酒，怎敌他、晚来风急！雁过也，正伤心，却是旧时相识。满地黄花堆积，憔悴损，如今有谁堪摘？守着窗儿，独自怎生得黑！梧桐更兼细雨，到黄昏、点点滴滴。这次第，怎一个愁字了得！"
       }
     ]
   },
@@ -511,10 +580,8 @@
     "latitude": 30.46667,
     "color": "灰色",
     "content": "晚年致力于《金石录》刊行，表奏朝廷，确立其学术地位；创作《永遇乐》等词追忆汴京盛景，以婉约词风留名文坛，无子女，遗稿由弟弟李迒整理。",
-    "ancient_location": "金华",
-    "modern_location": "浙江金华",
-    "representative_work": "《夏日绝句·生当作人杰》",
-    "poem_content": "生当作人杰，死亦为鬼雄。至今思项羽，不肯过江东。",
+    "ancient_place": "金华",
+    "modern_place": "浙江金华",
     "relationships": [
       {
         "name": "岳飞",
@@ -525,6 +592,12 @@
         "name": "韩世忠",
         "relation": "抗金名将",
         "description": "李清照借诗讽刺朝廷偏安，怀念抗金名将"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《夏日绝句·生当作人杰》",
+        "content": "生当作人杰，死亦为鬼雄。至今思项羽，不肯过江东。"
       }
     ]
   },
@@ -538,15 +611,19 @@
     "latitude": 30.46667,
     "color": "灰色",
     "content": "约1155年在临安（杭州）去世，享年约71岁，葬地不详；一生创“易安体”，为婉约词宗，被誉为“千古第一才女”，与辛弃疾并称“济南二安”。",
-    "ancient_location": "临安",
-    "modern_location": "浙江杭州",
-    "representative_work": "《永遇乐·落日熔金》",
-    "poem_content": "落日熔金，暮云合璧，人在何处。染柳烟浓，吹梅笛怨，春意知几许。元宵佳节，融和天气，次第岂无风雨。来相召、香车宝马，谢他酒朋诗侣。中州盛日，闺门多暇，记得偏重三五。铺翠冠儿，捻金雪柳，簇带争济楚。如今憔悴，风鬟霜鬓，怕见夜间出去。不如向、帘儿底下，听人笑语。",
+    "ancient_place": "临安",
+    "modern_place": "浙江杭州",
     "relationships": [
       {
         "name": "李迒",
         "relation": "弟弟",
         "description": "整理李清照遗稿"
+      }
+    ],
+    "representative_works": [
+      {
+        "title": "《永遇乐·落日熔金》",
+        "content": "落日熔金，暮云合璧，人在何处。染柳烟浓，吹梅笛怨，春意知几许。元宵佳节，融和天气，次第岂无风雨。来相召、香车宝马，谢他酒朋诗侣。中州盛日，闺门多暇，记得偏重三五。铺翠冠儿，捻金雪柳，簇带争济楚。如今憔悴，风鬟霜鬓，怕见夜间出去。不如向、帘儿底下，听人笑语。"
       }
     ]
   }

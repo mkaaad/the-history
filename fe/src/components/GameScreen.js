@@ -32,6 +32,15 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 诗作对话框状态
 	const [showPoemDialog, setShowPoemDialog] = useState(false);
 	const [poemText, setPoemText] = useState('');
+	// 回顾一生状态
+	const [showSummary, setShowSummary] = useState(false);
+	const [showAllLines, setShowAllLines] = useState(false);
+	const [summaryText, setSummaryText] = useState('');
+	// 对话状态
+	const [showChat, setShowChat] = useState(false);
+	const [chatMessages, setChatMessages] = useState([]);
+	const [userInput, setUserInput] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	
 	// 同步showChoice到ref
 	useEffect(() => {
@@ -139,6 +148,28 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		return points;
 	};
 
+	// 计算完整弧形路径（连接所有事件点）
+	const computeFullCurvePath = useCallback(() => {
+		if (!sortedEvents || sortedEvents.length < 2) return [];
+		
+		const fullPath = [];
+		for (let i = 0; i < sortedEvents.length - 1; i++) {
+			const currentEvent = sortedEvents[i];
+			const nextEvent = sortedEvents[i + 1];
+			const curvePath = computeCurvePath(
+				[currentEvent.longitude, currentEvent.latitude],
+				[nextEvent.longitude, nextEvent.latitude]
+			);
+			
+			if (curvePath) {
+				// 如果是第一段，添加所有点；否则跳过第一个点（避免重复）
+				const pointsToAdd = i === 0 ? curvePath : curvePath.slice(1);
+				fullPath.push(...pointsToAdd);
+			}
+		}
+		return fullPath;
+	}, [sortedEvents]);
+
 	// 根据事件年份获取年龄对应的头像
 	const getAvatarForEvent = (event) => {
 		if (!event || !player.birthYear) return player.avatar || player.image;
@@ -153,6 +184,39 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		} else {
 			return player.avatarOld || player.avatar || player.image;
 		}
+	};
+
+	// 格式化诗作文本：统一标题格式，诗作内容一句一换行
+	const formatPoemText = (work) => {
+		if (!work) return '';
+		
+		// 处理标题：确保有书名号
+		let title = work.title || '';
+		if (title && !title.includes('《') && !title.includes('》')) {
+			// 如果没有书名号，加上
+			title = `《${title}》`;
+		}
+		
+		// 处理内容：一句一换行（逗号后不换行）
+		let content = work.content || '';
+		if (content) {
+			// 中文标点分割：句号、问号、感叹号、顿号、分号、冒号后换行（逗号后不换行）
+			// 使用正则替换：在指定标点后添加换行符
+			content = content
+				.replace(/([。？！；：、])/g, '$1\n')
+				.replace(/\n+/g, '\n')  // 合并多个换行
+				.trim();  // 去除首尾空白
+		}
+		
+		// 组合标题和内容
+		if (title && content) {
+			return `${title}\n${content}`;
+		} else if (title) {
+			return title;
+		} else if (content) {
+			return content;
+		}
+		return '';
 	};
 
 	// 检查当前事件是否有诗作并设置对话框
@@ -170,9 +234,9 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			return;
 		}
 		
-		// 获取第一个诗作
+		// 获取第一个诗作并格式化
 		const firstWork = currentEvent.representative_works[0];
-		const text = (firstWork.title ? firstWork.title + '\n' : '') + (firstWork.content || '');
+		const text = formatPoemText(firstWork);
 		setPoemText(text);
 		setShowPoemDialog(true);
 	}, [currentEventIndex, sortedEvents]);
@@ -309,6 +373,134 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		}
 	};
 
+	// 回顾一生处理函数
+	const handleReviewLife = () => {
+		// 绘制所有轨迹线
+		setShowAllLines(true);
+		// 设置总结语
+		const summary = generateSummaryText();
+		setSummaryText(summary);
+		setShowSummary(true);
+		// 清除当前的单条弧线
+		setLinePath(null);
+	};
+
+	// 生成总结语文本
+	const generateSummaryText = () => {
+		const birthYear = player.birthYear || 0;
+		const deathYear = getDeathYear();
+		const age = deathYear - birthYear;
+		const era = player.era;
+		
+		const summaries = {
+			'李白': `青莲谪仙，诗酒人生。从碎叶城到长江畔，六十二载岁月，留下千首诗篇。你曾“仰天大笑出门去”，也曾“举杯消愁愁更愁”。官场失意，山水寄情，最终醉月而逝，将浪漫主义推向巅峰。`,
+			'李清照': `千古第一才女，婉约词宗。从明水闺秀到颠沛流离，七十一载春秋，见证两宋变迁。你既有“和羞走，倚门回首，却把青梅嗅”的少女情怀，也有“生当作人杰，死亦为鬼雄”的豪迈气概。词别是一家，易安永存。`,
+			'苏轼': `东坡居士，全才文豪。从眉山少年到儋州老翁，六十六载浮沉，历经三度贬谪。你既能“大江东去”，亦能“明月几时有”。黄州惠州儋州，成就了你的文学功业，更成就了“一蓑烟雨任平生”的旷达人生。`
+		};
+		
+		return summaries[player.name] || `${player.name}，${era}的杰出人物，${age}载人生，留下不朽篇章。`;
+	};
+	
+	// 获取死亡年份（从传记中提取或估算）
+	const getDeathYear = () => {
+		const bio = player.biography?.birthDeath || '';
+		const match = bio.match(/\d{4}.*?(\d{4})/);
+		if (match && match[1]) {
+			return parseInt(match[1]);
+		}
+		// 默认估算：出生年份+平均寿命
+		return (player.birthYear || 0) + 70;
+	};
+
+	// 对话处理函数
+	const toggleChat = () => {
+		setShowChat(!showChat);
+		if (!showChat) {
+			// 初始化对话
+			setChatMessages([
+				{
+					role: 'system',
+					content: `你好！我是${player.name}，${player.era}的${player.name === '李清照' ? '女词人' : '诗人'}。有什么想和我聊的吗？`
+				}
+			]);
+		}
+	};
+
+	const handleUserInputChange = (e) => {
+		setUserInput(e.target.value);
+	};
+
+	const handleSendMessage = async () => {
+		if (!userInput.trim() || isLoading) return;
+
+		const userMessage = userInput.trim();
+		setUserInput('');
+		
+		// 添加用户消息
+		const newMessages = [...chatMessages, { role: 'user', content: userMessage }];
+		setChatMessages(newMessages);
+		setIsLoading(true);
+
+		try {
+			// 获取当前事件信息
+			const currentEvent = sortedEvents[currentEventIndex];
+			const currentYear = currentEvent?.start_year || player.birthYear;
+			const currentPlace = currentEvent?.ancient_place || '未知地点';
+			const currentState = currentEvent?.state || '未知状态';
+			const currentAge = currentYear - (player.birthYear || 0);
+			
+			// 调用后端API（相对路径，由nginx代理）
+			const response = await fetch('/api/chat', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					character: player.name,
+					message: userMessage,
+					context: {
+						currentYear,
+						currentPlace,
+						currentState,
+						currentAge: currentAge > 0 ? currentAge : 0,
+						era: player.era,
+						birthYear: player.birthYear,
+						biography: player.biography?.birthDeath || '',
+						choiceDescription: currentChoice ? currentChoice.description : ''
+					}
+				})
+			});
+
+			if (!response.ok) {
+				throw new Error(`请求失败: ${response.status}`);
+			}
+
+			const data = await response.json();
+			
+			// 添加AI回复
+			setChatMessages(prev => [...prev, { 
+				role: 'assistant', 
+				content: data.response 
+			}]);
+		} catch (error) {
+			console.error('对话错误:', error);
+			setChatMessages(prev => [...prev, { 
+				role: 'assistant', 
+				content: `抱歉，我暂时无法回答。错误: ${error.message}` 
+			}]);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	// 处理Enter键发送
+	const handleKeyPress = (e) => {
+		if (e.key === 'Enter' && !e.shiftKey) {
+			e.preventDefault();
+			handleSendMessage();
+		}
+	};
+
 	// 检查当前事件是否有关键抉择
 	useEffect(() => {
 		if (!sortedEvents.length || !choiceData.length) return;
@@ -429,6 +621,38 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		polylineRef.current = curve;
 	}, [isMapLoaded, linePath]);
 
+	// 绘制所有轨迹线（回顾一生时显示完整路径）
+	useEffect(() => {
+		if (!isMapLoaded || !showAllLines || !sortedEvents.length) return;
+		const AMap = amapRef.current;
+		const map = mapInstanceRef.current;
+		
+		// 清除旧的曲线（包括单条弧线）
+		if (polylineRef.current) polylineRef.current.setMap(null);
+		
+		// 创建完整的弧形轨迹线
+		const fullPath = computeFullCurvePath();
+		if (fullPath.length === 0) return;
+		
+		const polyline = new AMap.Polyline({
+			path: fullPath,
+			showDir: true,
+			strokeColor: "#8E2323",
+			strokeOpacity: 0.6,
+			strokeWeight: 5,
+			lineJoin: 'round'
+		});
+		polyline.setMap(map);
+		polylineRef.current = polyline;
+		
+		// 调整地图视野以显示完整轨迹
+		setTimeout(() => {
+			if (fullPath.length > 0) {
+				map.setFitView([polyline], false, [80, 80, 80, 80]);
+			}
+		}, 300);
+	}, [isMapLoaded, showAllLines, sortedEvents, computeFullCurvePath]);
+
 	// 4. 处理点切换逻辑 (更新图标和视角)
 	useEffect(() => {
 		if (!isMapLoaded || markersRef.current.length === 0 || !iconsRef.current.normal || !iconsRef.current.selected || !amapRef.current) return;
@@ -496,6 +720,24 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						<div className="choice-modal-content">
 							<p className="choice-description">{currentChoice.description}</p>
 							
+							<div style={{ textAlign: 'center', margin: '15px 0' }}>
+								<button 
+									className="btn-chinese"
+									onClick={toggleChat}
+									style={{
+										padding: '8px 16px',
+										fontSize: '0.9rem',
+										background: '#8E2323',
+										color: 'white',
+										border: 'none',
+										borderRadius: '4px',
+										cursor: 'pointer'
+									}}
+								>
+									与诗人对话
+								</button>
+							</div>
+							
 							{!choiceResult ? (
 								<div className="choice-options">
 									{currentChoice.option.map((optionText, index) => (
@@ -513,7 +755,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 									<div className={`result-content ${choiceResult === 'correct' ? 'correct' : 'wrong'}`}>
 										{choiceResultContent}
 									</div>
-									<div className="choice-result-actions">
+									<div className="choice-result-actions" style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
 										{choiceResult === 'wrong' ? (
 											<button className="btn-chinese" onClick={handleRetryChoice}>
 												重新选择
@@ -523,6 +765,20 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 												继续游戏
 											</button>
 										)}
+										<button 
+											className="btn-chinese"
+											onClick={toggleChat}
+											style={{
+												background: '#8E2323',
+												color: 'white',
+												border: 'none',
+												borderRadius: '4px',
+												padding: '8px 16px',
+												cursor: 'pointer'
+											}}
+										>
+											与诗人对话
+										</button>
 									</div>
 								</div>
 							)}
@@ -540,6 +796,24 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						<div className="character-era" style={{fontSize: '0.9rem', color: '#666'}}>{player.era}</div>
 					</div>
 					
+					{/* 对话按钮 */}
+					<button 
+						className="btn-chinese"
+						onClick={toggleChat}
+						style={{
+							marginLeft: '0.5rem',
+							padding: '0.4rem 0.8rem',
+							fontSize: '0.85rem',
+							background: '#8E2323',
+							color: 'white',
+							border: 'none',
+							borderRadius: '4px',
+							cursor: 'pointer'
+						}}
+					>
+						{showChat ? '关闭对话' : '与诗人对话'}
+					</button>
+					
 					{/* 诗作对话框 */}
 					{showPoemDialog && (
 						<div style={{
@@ -556,7 +830,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 							fontSize: '0.95rem',
 							lineHeight: 1.6,
 							color: '#333',
-							zIndex: 1000
+							zIndex: 3001
 						}}>
 							{/* 对话框小三角 */}
 							<div style={{
@@ -580,20 +854,198 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								borderRight: '10px solid rgba(255, 252, 240, 0.95)'
 							}} />
 							
-							<div style={{
-								fontWeight: 'bold',
-								color: '#8E2323',
-								marginBottom: '8px',
-								borderBottom: '1px solid #c09553',
-								paddingBottom: '4px'
-							}}>
-								诗作
-							</div>
+
 							<div style={{
 								whiteSpace: 'pre-wrap',
-								minHeight: '60px'
+								minHeight: '60px',
+								textAlign: 'center'
 							}}>
 								{poemText}
+							</div>
+						</div>
+					)}
+					
+					{/* 对话对话框 */}
+					{showChat && (
+						<div style={{
+							position: 'absolute',
+							left: 'calc(100% + 10px)',
+							top: 0,
+							width: '400px',
+							height: '500px',
+							background: 'rgba(255, 252, 240, 0.98)',
+							border: '2px solid #8E2323',
+							borderRadius: '12px',
+							boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
+							display: 'flex',
+							flexDirection: 'column',
+							zIndex: 3000,
+							overflow: 'hidden'
+						}}>
+							{/* 对话框小三角 */}
+							<div style={{
+								position: 'absolute',
+								left: '-10px',
+								top: '30px',
+								width: 0,
+								height: 0,
+								borderTop: '10px solid transparent',
+								borderBottom: '10px solid transparent',
+								borderRight: '10px solid #8E2323'
+							}} />
+							<div style={{
+								position: 'absolute',
+								left: '-8px',
+								top: '30px',
+								width: 0,
+								height: 0,
+								borderTop: '10px solid transparent',
+								borderBottom: '10px solid transparent',
+								borderRight: '10px solid rgba(255, 252, 240, 0.98)'
+							}} />
+							
+							{/* 对话框标题 */}
+							<div style={{
+								padding: '12px 16px',
+								background: '#8E2323',
+								color: 'white',
+								fontWeight: 'bold',
+								fontSize: '1.1rem',
+								borderBottom: '1px solid #c09553',
+								display: 'flex',
+								justifyContent: 'space-between',
+								alignItems: 'center'
+							}}>
+								<span>与{player.name}对话</span>
+								<button 
+									onClick={toggleChat}
+									style={{
+										background: 'transparent',
+										border: 'none',
+										color: 'white',
+										fontSize: '1.2rem',
+										cursor: 'pointer'
+									}}
+								>
+									×
+								</button>
+							</div>
+							
+							{/* 消息区域 */}
+							<div style={{
+								flex: 1,
+								padding: '16px',
+								overflowY: 'auto',
+								fontFamily: '"STSong", "SimSun", serif',
+								fontSize: '0.95rem',
+								lineHeight: 1.6
+							}}>
+								{chatMessages.filter(msg => msg.role !== 'system').map((message, index) => (
+									<div 
+										key={index}
+										style={{
+											marginBottom: '12px',
+											display: 'flex',
+											flexDirection: 'column',
+											alignItems: message.role === 'user' ? 'flex-end' : 'flex-start'
+										}}
+									>
+										<div style={{
+											maxWidth: '80%',
+											padding: '10px 14px',
+											borderRadius: message.role === 'user' ? '12px 12px 0 12px' : '12px 12px 12px 0',
+											background: message.role === 'user' ? '#8E2323' : '#F7F3E8',
+											color: message.role === 'user' ? 'white' : '#333',
+											border: message.role === 'user' ? 'none' : '1px solid #c09553',
+											whiteSpace: 'pre-wrap',
+											wordBreak: 'break-word'
+										}}>
+											{message.content}
+										</div>
+										<div style={{
+											fontSize: '0.8rem',
+											color: '#666',
+											marginTop: '4px',
+											marginLeft: message.role === 'user' ? '0' : '10px',
+											marginRight: message.role === 'user' ? '10px' : '0'
+										}}>
+											{message.role === 'user' ? '你' : player.name}
+										</div>
+									</div>
+								))}
+								
+								{isLoading && (
+									<div style={{
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'flex-start',
+										marginBottom: '12px'
+									}}>
+										<div style={{
+											padding: '10px 14px',
+											borderRadius: '12px 12px 12px 0',
+											background: '#F7F3E8',
+											border: '1px solid #c09553',
+											color: '#333',
+											display: 'flex',
+											alignItems: 'center'
+										}}>
+											<div className="typing-indicator">
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+											<span style={{marginLeft: '8px'}}>思考中...</span>
+										</div>
+									</div>
+								)}
+							</div>
+							
+							{/* 输入区域 */}
+							<div style={{
+								padding: '12px 16px',
+								borderTop: '1px solid #c09553',
+								background: 'rgba(247, 243, 232, 0.9)'
+							}}>
+								<div style={{
+									display: 'flex',
+									gap: '8px'
+								}}>
+									<textarea
+										value={userInput}
+										onChange={handleUserInputChange}
+										onKeyPress={handleKeyPress}
+										placeholder={`向${player.name}提问...`}
+										style={{
+											flex: 1,
+											padding: '10px 12px',
+											border: '1px solid #c09553',
+											borderRadius: '6px',
+											fontFamily: '"STSong", "SimSun", serif',
+											fontSize: '0.95rem',
+											resize: 'none',
+											minHeight: '50px',
+											maxHeight: '100px',
+											background: 'white'
+										}}
+									/>
+									<button
+										onClick={handleSendMessage}
+										disabled={isLoading || !userInput.trim()}
+										style={{
+											padding: '10px 20px',
+											background: userInput.trim() && !isLoading ? '#8E2323' : '#ccc',
+											color: 'white',
+											border: 'none',
+											borderRadius: '6px',
+											cursor: userInput.trim() && !isLoading ? 'pointer' : 'not-allowed',
+											fontWeight: 'bold',
+											alignSelf: 'flex-end'
+										}}
+									>
+										发送
+									</button>
+								</div>
 							</div>
 						</div>
 					)}
@@ -610,6 +1062,8 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				<div className="mb-3" style={{fontWeight: 'bold'}}>
 					{sortedEvents[currentEventIndex]?.state} ({sortedEvents[currentEventIndex]?.start_year}年)
 				</div>
+
+
 
 				{/* 时间轴逻辑 */}
 				<div className="timeline-container">
@@ -629,22 +1083,66 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 					</div>
 				</div>
 
-				<div className="btn-group">
-					<button
-						className="nav-btn"
-						onClick={handlePrev}
-						disabled={currentEventIndex === 0}
-					>
-						上一步
-					</button>
-					<button
-						className="nav-btn"
-						onClick={handleNext}
-						disabled={currentEventIndex === sortedEvents.length - 1}
-					>
-						下一步
-					</button>
-				</div>
+				{/* 总结语显示 */}
+				{showSummary && (
+					<div className="summary-container" style={{
+						marginTop: '1.5rem',
+						padding: '1.5rem',
+						background: 'rgba(255, 252, 240, 0.95)',
+						border: '2px solid #c09553',
+						borderRadius: '8px',
+						boxShadow: '0 6px 20px rgba(0, 0, 0, 0.1)',
+						fontFamily: '"STKaiti", "Kaiti", serif',
+						fontSize: '1.1rem',
+						lineHeight: 1.8,
+						color: '#333',
+						textAlign: 'center'
+					}}>
+						<div style={{
+							fontSize: '1.3rem',
+							fontWeight: 'bold',
+							color: '#8E2323',
+							marginBottom: '1rem',
+							borderBottom: '2px solid #c09553',
+							paddingBottom: '0.5rem'
+						}}>
+							人生总结
+						</div>
+						<div style={{ whiteSpace: 'pre-wrap' }}>
+							{summaryText}
+						</div>
+					</div>
+				)}
+				
+				{/* 按钮组 */}
+				{!showSummary && (
+					<div className="btn-group">
+						<button
+							className="nav-btn"
+							onClick={handlePrev}
+							disabled={currentEventIndex === 0}
+						>
+							上一步
+						</button>
+						{currentEventIndex === sortedEvents.length - 1 ? (
+							<button
+								className="nav-btn"
+								onClick={handleReviewLife}
+								style={{background: '#5D6266'}} // 不同颜色以示区别
+							>
+								回顾一生
+							</button>
+						) : (
+							<button
+								className="nav-btn"
+								onClick={handleNext}
+								disabled={currentEventIndex === sortedEvents.length - 1}
+							>
+								下一步
+							</button>
+						)}
+					</div>
+				)}
 			</div>
 		</div>
 	);

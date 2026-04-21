@@ -242,6 +242,35 @@ const RightSidebar = ({ event }) => {
               <div className="event-content">
                 <p style={{ color: textColor }}>{event.content}</p>
               </div>
+              
+              {/* 古今地名显示 */}
+              {(event.ancient_place || event.modern_place) && (
+                <div className="place-info-sidebar" style={{
+                  margin: '1rem 0',
+                  padding: '0.8rem',
+                  background: 'rgba(255, 252, 240, 0.9)',
+                  border: '1px solid #c09553',
+                  borderRadius: '6px',
+                  fontFamily: '"STSong", "SimSun", serif',
+                  fontSize: '0.9rem'
+                }}>
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '0.4rem'}}>
+                    {event.ancient_place && (
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '0.5rem'}}>
+                        <span style={{color: '#8E2323', fontWeight: 'bold', minWidth: '3.5rem'}}>古地名：</span>
+                        <span style={{color: '#333'}}>{event.ancient_place}</span>
+                      </div>
+                    )}
+                    {event.modern_place && (
+                      <div style={{display: 'flex', alignItems: 'flex-start', gap: '0.5rem'}}>
+                        <span style={{color: '#8E2323', fontWeight: 'bold', minWidth: '3.5rem'}}>今地名：</span>
+                        <span style={{color: '#333'}}>{event.modern_place}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              
               <RelationshipGraph 
                 relationships={event.relationships}
                 centerName={event.name}
