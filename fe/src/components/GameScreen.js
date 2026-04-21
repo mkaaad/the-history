@@ -206,7 +206,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			// 中文标点分割：句号、问号、感叹号、顿号、分号、冒号后换行（逗号后不换行）
 			// 使用正则替换：在指定标点后添加换行符
 			content = content
-				.replace(/([。？！；：、])/g, '$1\n')
+				.replace(/([。？！；：…… ])/g, '$1\n')
 				.replace(/\n+/g, '\n')  // 合并多个换行
 				.trim();  // 去除首尾空白
 		}

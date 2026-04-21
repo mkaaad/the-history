@@ -10,12 +10,6 @@
     "color": "蓝色",
     "ancient_place": "眉州眉山",
     "modern_place": "四川 眉山市",
-    "representative_works": [
-      {
-        "title": "无（幼年）",
-        "content": "此时尚未作诗"
-      }
-    ],
     "relationships": [
       {
         "name": "苏洵",
@@ -26,6 +20,13 @@
         "name": "程氏",
         "relation": "母亲",
         "description": "启蒙教育"
+      }
+    ],
+    "content": "1037年生于眉州眉山，为苏洵长子、苏辙兄长，出身书香仕宦之家，自幼受家庭熏陶，天赋异禀。",
+    "representative_works": [
+      {
+        "title": "《无（幼年）》",
+        "content": "此时尚未作诗"
       }
     ]
   },
@@ -57,7 +58,8 @@
         "relation": "弟弟",
         "description": "一同读书"
       }
-    ]
+    ],
+    "content": "七岁开始读书，八岁入天庆观求学，十岁由母亲程氏亲自教导，读《汉书·范滂传》立下济世之志。"
   },
   {
     "name": "苏轼",
@@ -82,7 +84,8 @@
         "relation": "妻子",
         "description": "结发之妻"
       }
-    ]
+    ],
+    "content": "19岁与青神王弗成婚，王弗聪慧知礼，成为苏轼早年重要伴侣与精神慰藉。"
   },
   {
     "name": "苏轼",
@@ -112,7 +115,8 @@
         "relation": "弟弟",
         "description": "同行赴考"
       }
-    ]
+    ],
+    "content": "21岁与苏洵、苏辙自眉山赴京参加科举，满怀壮志，开启仕途之路。"
   },
   {
     "name": "苏轼",
@@ -137,7 +141,8 @@
         "relation": "恩师",
         "description": "赏识才华"
       }
-    ]
+    ],
+    "content": "22岁考中进士，《刑赏忠厚之至论》获欧阳修激赏，位列第二；同年母丧，归乡丁忧。"
   },
   {
     "name": "苏轼",
@@ -167,7 +172,8 @@
         "relation": "弟弟",
         "description": "守制期满同行"
       }
-    ]
+    ],
+    "content": "守制期满，携家人再次赴京，沿途创作诗文汇成《南行集》，长子苏迈生于途中。"
   },
   {
     "name": "苏轼",
@@ -192,7 +198,8 @@
         "relation": "弟弟",
         "description": "兄弟离别"
       }
-    ]
+    ],
+    "content": "授福昌县主簿，未赴任，留京准备制科考试，继续积累才学与声望。"
   },
   {
     "name": "苏轼",
@@ -217,7 +224,8 @@
         "relation": "弟弟",
         "description": "作诗留别"
       }
-    ]
+    ],
+    "content": "制科考试入第三等，为北宋百年之最，授凤翔签判，与苏辙离别作“雪泥鸿爪”名句。"
   },
   {
     "name": "苏轼",
@@ -246,7 +254,8 @@
         "relation": "友人",
         "description": "结交好友"
       }
-    ]
+    ],
+    "content": "在凤翔任职，处理政务、祈雨治旱，结交陈季常，开启地方为官生涯。"
   },
   {
     "name": "苏轼",
@@ -271,7 +280,8 @@
         "relation": "妻子",
         "description": "结发妻去世"
       }
-    ]
+    ],
+    "content": "30岁结发妻王弗去世，苏轼悲痛万分，为后续悼亡词埋下情感根基。"
   },
   {
     "name": "苏轼",
@@ -296,7 +306,8 @@
         "relation": "父亲",
         "description": "父亲病逝"
       }
-    ]
+    ],
+    "content": "父亲苏洵病逝，与苏辙护丧归蜀，再次丁忧，仕途暂时中断。"
   },
   {
     "name": "苏轼",
@@ -321,7 +332,8 @@
         "relation": "妻子",
         "description": "续弦妻子"
       }
-    ]
+    ],
+    "content": "守丧期满，续娶王弗堂妹王闰之，重建家庭，开启人生新阶段。"
   },
   {
     "name": "苏轼",
@@ -346,7 +358,8 @@
         "relation": "政敌",
         "description": "反对新法"
       }
-    ]
+    ],
+    "content": "王安石推行新法，苏轼上书反对激进变革，与新党产生矛盾，朝堂处境艰难。"
   },
   {
     "name": "苏轼",
@@ -375,7 +388,8 @@
         "relation": "侍妾",
         "description": "纳为妾室"
       }
-    ]
+    ],
+    "content": "自请离京任杭州通判，远离政治漩涡，沉醉杭州山水，开始地方利民政绩。"
   },
   {
     "name": "苏轼",
@@ -405,7 +419,8 @@
         "relation": "儿子",
         "description": "幼子出生"
       }
-    ]
+    ],
+    "content": "修复钱塘六井、赈济饥民，恩师欧阳修去世，幼子苏过出生，政绩与家事并行。"
   },
   {
     "name": "苏轼",
@@ -430,7 +445,8 @@
         "relation": "弟弟",
         "description": "怀念子由"
       }
-    ]
+    ],
+    "content": "调任密州知州，治理地方，安抚百姓，进入创作高产期。"
   },
   {
     "name": "苏轼",
@@ -455,7 +471,8 @@
         "relation": "妻子",
         "description": "梦见亡妻"
       }
-    ]
+    ],
+    "content": "梦见亡妻王弗，作《江城子·乙卯正月二十日夜记梦》，成为千古悼亡绝唱。"
   },
   {
     "name": "苏轼",
@@ -480,7 +497,8 @@
         "relation": "弟弟",
         "description": "怀念子由"
       }
-    ]
+    ],
+    "content": "中秋作《水调歌头·明月几时有》，怀念苏辙，成就中秋词巅峰。"
   },
   {
     "name": "苏轼",
@@ -509,7 +527,8 @@
         "relation": "弟弟",
         "description": "子由作赋"
       }
-    ]
+    ],
+    "content": "任徐州知州，亲率军民筑堤抗洪三月，保全全城，深得百姓爱戴。"
   },
   {
     "name": "苏轼",
@@ -539,7 +558,8 @@
         "relation": "政敌",
         "description": "弹劾苏轼"
       }
-    ]
+    ],
+    "content": "调任湖州，因《湖州谢上表》被新党弹劾，引发乌台诗案，入狱百余日，险遭处死。"
   },
   {
     "name": "苏轼",
@@ -565,500 +585,500 @@
     ]
   },
   {
-"name": "苏轼",
-"state": "东坡躬耕·自号东坡居士",
-"start_year": 1081,
-"end_year": 1082,
-"stage": "乌台诗案与黄州贬谪",
-"longitude": 115.45,
-"latitude": 30.75,
-"color": "黑色",
-"content": "开垦东坡荒地，自号东坡居士；游赤壁作《前赤壁赋》《念奴娇·赤壁怀古》《黄州寒食帖》，文学与思想升华。",
-"ancient_place": "黄州",
-"modern_place": "湖北 黄冈市",
-"representative_works": [
-{
-"title": "念奴娇·赤壁怀古",
-"content": "大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。……"
-},
-{
-"title": "前赤壁赋",
-"content": "壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。……"
-},
-{
-"title": "东坡",
-"content": "雨洗东坡月色清，市人行尽野人行。莫嫌荦确坡头路，自爱铿然曳杖声。"
-}
-],
-"relationships": [
-{
-"name": "王朝云",
-"relation": "妾",
-"description": "陪伴苏轼在黄州生活，后生下幼子苏遁"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼被贬期间给予精神支持"
-},
-{
-"name": "张梦得",
-"relation": "友人",
-"description": "与苏轼同游赤壁，参与文学创作"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "四十八岁·丧子苏遁",
-"start_year": 1083,
-"end_year": 1083,
-"stage": "乌台诗案与黄州贬谪",
-"longitude": 115.45,
-"latitude": 30.75,
-"color": "灰色",
-"content": "王朝云所生幼子苏遁夭折，苏轼承受晚年丧子之痛。",
-"ancient_place": "黄州",
-"modern_place": "湖北 黄冈市",
-"representative_works": [
-{
-"title": "洗儿戏作",
-"content": "人皆养子望聪明，我被聪明误一生。惟愿孩儿愚且鲁，无灾无难到公卿。"
-}
-],
-"relationships": [
-{
-"name": "王朝云",
-"relation": "妾",
-"description": "苏遁生母，与苏轼共同承受丧子之痛"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼丧子期间给予安慰和支持"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "四十九岁·离黄州·《题西林壁》",
-"start_year": 1084,
-"end_year": 1084,
-"stage": "乌台诗案与黄州贬谪",
-"longitude": 108.95,
-"latitude": 34.26667,
-"color": "黑色",
-"content": "奉诏移汝州，离黄州游庐山，作《题西林壁》，充满人生哲思。",
-"ancient_place": "庐山/西林寺",
-"modern_place": "江西 九江市 庐山区",
-"representative_works": [
-{
-"title": "题西林壁",
-"content": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
-}
-],
-"relationships": [
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼离黄州时给予送别"
-},
-{
-"name": "参寥子",
-"relation": "友人",
-"description": "陪伴苏轼游庐山，共同创作"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "五十岁·还朝·高太后垂帘",
-"start_year": 1085,
-"end_year": 1085,
-"stage": "旧党当政与元祐浮沉",
-"longitude": 108.95,
-"latitude": 34.26667,
-"color": "蓝色",
-"content": "宋神宗驾崩，高太后执政，旧党执政，苏轼被召回京，一路升迁至翰林学士。",
-"ancient_place": "汴京/开封府",
-"modern_place": "河南 开封市",
-"representative_works": [
-{
-"title": "司马温公行状",
-"content": "（此时期主要进行政论与史论写作，如为司马光撰写的行状等）"
-}
-],
-"relationships": [
-{
-"name": "高太后",
-"relation": "执政者",
-"description": "提拔苏轼，使其官复原职"
-},
-{
-"name": "司马光",
-"relation": "旧党领袖",
-"description": "与苏轼政见相近，共同反对新法"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "与苏轼同朝为官，互相支持"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "朝堂风波·不趋时势",
-"start_year": 1086,
-"end_year": 1088,
-"stage": "旧党当政与元祐浮沉",
-"longitude": 108.95,
-"latitude": 34.26667,
-"color": "红色",
-"content": "不迎合司马光尽废新法，主张折中取舍，遭新旧两党夹击，自请外放。",
-"ancient_place": "汴京/开封府",
-"modern_place": "河南 开封市",
-"representative_works": [
-{
-"title": "荔枝叹",
-"content": "我愿天公怜赤子，莫生尤物来归州。……雨顺风调百谷登，民不饥寒为上瑞。"
-}
-],
-"relationships": [
-{
-"name": "司马光",
-"relation": "旧党领袖",
-"description": "苏轼对其尽废新法的主张持异议"
-},
-{
-"name": "章惇",
-"relation": "新党成员",
-"description": "与苏轼政见不合，主张推行新法"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "与苏轼政见相近，共同主张折中"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "五十二岁·出知杭州·疏浚西湖",
-"start_year": 1089,
-"end_year": 1091,
-"stage": "旧党当政与元祐浮沉",
-"longitude": 120.25,
-"latitude": 30.46667,
-"color": "红色",
-"content": "再任杭州知州，疏浚西湖，以淤泥筑苏堤，造福一方，成为西湖标志性景观。",
-"ancient_place": "杭州",
-"modern_place": "浙江 杭州市",
-"representative_works": [
-{
-"title": "八月十五日看潮五绝",
-"content": "吴儿生长狎涛渊，冒利忘生不自怜。东海若知明主意，应教斥卤变桑田。"
-}
-],
-"relationships": [
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼任职杭州期间给予支持"
-},
-{
-"name": "秦观",
-"relation": "学生",
-"description": "受苏轼提携，成为“苏门四学士”之一"
-},
-{
-"name": "参寥子",
-"relation": "友人",
-"description": "与苏轼在杭州交往密切"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "辗转颍州、扬州、定州",
-"start_year": 1091,
-"end_year": 1093,
-"stage": "旧党当政与元祐浮沉",
-"longitude": 114.5,
-"latitude": 35.33333,
-"color": "蓝色",
-"content": "先后知颍州、扬州、定州，勤政爱民，维持地方安定。",
-"ancient_place": "颍州/扬州/定州",
-"modern_place": "安徽 阜阳市 / 江苏 扬州市 / 河北 定州市",
-"representative_works": [
-{
-"title": "泛颍",
-"content": "我性喜临水，得颍意甚奇。到官十日来，九日河之湄。"
-}
-],
-"relationships": [
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼辗转各地任职期间保持联系"
-},
-{
-"name": "黄庭坚",
-"relation": "学生",
-"description": "受苏轼影响，成为“苏门四学士”之一"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "五十七岁·丧妻王闰之",
-"start_year": 1093,
-"end_year": 1093,
-"stage": "旧党当政与元祐浮沉",
-"longitude": 116.35,
-"latitude": 33.48333,
-"color": "蓝色",
-"content": "妻子王闰之去世，相伴二十五年的家庭支柱离去；高太后病逝，哲宗亲政，新党复起。",
-"ancient_place": "汴京/开封府",
-"modern_place": "河南 开封市",
-"representative_works": [
-{
-"title": "祭亡妻同安郡君文",
-"content": "我曰归哉，行返丘园。……孰迎我门，孰馈我田。"
-}
-],
-"relationships": [
-{
-"name": "王闰之",
-"relation": "妻子",
-"description": "相伴二十五年的妻子，去世后苏轼悲痛不已"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼丧妻期间给予安慰"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "五十七岁·一贬惠州",
-"start_year": 1094,
-"end_year": 1094,
-"stage": "南荒贬谪与生死一线",
-"longitude": 114.68333,
-"latitude": 23.18333,
-"color": "黑色",
-"content": "被新党打压，贬惠州安置，携王朝云与幼子苏过南下，心境苍凉。",
-"ancient_place": "惠州",
-"modern_place": "广东 惠州市",
-"representative_works": [
-{
-"title": "十月二日初到惠州",
-"content": "仿佛曾游岂梦中，欣然鸡犬识新丰。……"
-}
-],
-"relationships": [
-{
-"name": "王朝云",
-"relation": "妾",
-"description": "陪伴苏轼南下惠州"
-},
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "随苏轼南下惠州"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼被贬惠州时给予支持"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "惠州岁月",
-"start_year": 1095,
-"end_year": 1096,
-"stage": "南荒贬谪与生死一线",
-"longitude": 114.68333,
-"latitude": 23.18333,
-"color": "黑色",
-"content": "作“日啖荔枝三百颗”苦中作乐；1096年王朝云病逝，苏轼再失挚爱。",
-"ancient_place": "惠州",
-"modern_place": "广东 惠州市",
-"representative_works": [
-{
-"title": "食荔枝二首",
-"content": "罗浮山下四时春，卢橘杨梅次第新。日啖荔枝三百颗，不辞长作岭南人。"
-},
-{
-"title": "西江月·梅花",
-"content": "玉骨那愁瘴雾，冰姿自有仙风。……高情已逐晓云空。不与梨花同梦。"
-}
-],
-"relationships": [
-{
-"name": "王朝云",
-"relation": "妾",
-"description": "在惠州期间病逝，苏轼再失挚爱"
-},
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "在惠州陪伴苏轼"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "六十岁·再贬儋州",
-"start_year": 1097,
-"end_year": 1097,
-"stage": "南荒贬谪与生死一线",
-"longitude": 109.5,
-"latitude": 20.16667,
-"color": "黑色",
-"content": "60岁再贬海南儋州，渡海诀别家人，垂老投荒，陷入人生最低谷。",
-"ancient_place": "昌化军/儋州",
-"modern_place": "海南 儋州市",
-"representative_works": [
-{
-"title": "六月二十日夜渡海",
-"content": "参横斗转欲三更，苦雨终风也解晴。云散月明谁点缀？天容海色本澄清。"
-}
-],
-"relationships": [
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "随苏轼渡海前往儋州"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "在苏轼被贬儋州时给予支持"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "儋州三载·文明拓荒",
-"start_year": 1098,
-"end_year": 1100,
-"stage": "南荒贬谪与生死一线",
-"longitude": 109.5,
-"latitude": 20.16667,
-"color": "黑色",
-"content": "建桄榔庵，开坛讲学、劝农兴医，开启海南文教之风，深受百姓爱戴。",
-"ancient_place": "儋州",
-"modern_place": "海南 儋州市",
-"representative_works": [
-{
-"title": "汲江煎茶",
-"content": "活水还须活火烹，自临钓石取深清。……枯肠未易禁三碗，坐数荒村长短更。"
-}
-],
-"relationships": [
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "在儋州陪伴苏轼"
-},
-{
-"name": "黎子云",
-"relation": "当地友人",
-"description": "与苏轼交往密切，支持其文教活动"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "六十三岁·遇赦北归",
-"start_year": 1100,
-"end_year": 1100,
-"stage": "南荒贬谪与生死一线",
-"longitude": 109.5,
-"latitude": 20.16667,
-"color": "灰色",
-"content": "宋徽宗即位大赦，苏轼离海南北归，感慨“我本儋耳人”，对海南充满眷恋。",
-"ancient_place": "儋州",
-"modern_place": "海南 儋州市",
-"representative_works": [
-{
-"title": "被酒独行，遍至子云、威、徽、先觉四黎之舍",
-"content": "总角黎家三四童，口吹葱叶送迎翁。……莫作天涯万里意，溪边自有舞雩风。"
-}
-],
-"relationships": [
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "随苏轼北归"
-},
-{
-"name": "黎子云",
-"relation": "当地友人",
-"description": "在苏轼北归时给予送别"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "六十四岁·《自题金山画像》",
-"start_year": 1101,
-"end_year": 1101,
-"stage": "北归终程与诗魂归位",
-"longitude": 119.73333,
-"latitude": 32.35,
-"color": "红色",
-"content": "在金山寺题诗自评：“问汝平生功业，黄州惠州儋州”，总结一生坎坷与豁达。",
-"ancient_place": "润州/金山寺",
-"modern_place": "江苏 镇江市",
-"representative_works": [
-{
-"title": "自题金山画像",
-"content": "心似已灰之木，身如不系之舟。问汝平生功业，黄州惠州儋州。"
-}
-],
-"relationships": [
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "在苏轼病重期间陪伴左右"
-}
-]
-},
-{
-"name": "苏轼",
-"state": "病逝常州",
-"start_year": 1101,
-"end_year": 1101,
-"stage": "北归终程与诗魂归位",
-"longitude": 119.73333,
-"latitude": 32.35,
-"color": "蓝色",
-"content": "1101年在常州病逝，享年66岁，苏辙遵遗愿葬于河南郏县，世称“三苏坟”，留千古文名。",
-"ancient_place": "常州",
-"modern_place": "江苏 常州市",
-"representative_works": [
-{
-"title": "答径山琳长老",
-"content": "与君皆丙子，各已三万日。一日一千偈，电往那容诘。……"
-}
-],
-"relationships": [
-{
-"name": "苏过",
-"relation": "幼子",
-"description": "在苏轼病逝前陪伴左右"
-},
-{
-"name": "苏辙",
-"relation": "弟弟",
-"description": "遵苏轼遗愿将其葬于河南郏县"
-}
-]
-}
+    "name": "苏轼",
+    "state": "东坡躬耕·自号东坡居士",
+    "start_year": 1081,
+    "end_year": 1082,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 115.45,
+    "latitude": 30.75,
+    "color": "黑色",
+    "content": "开垦东坡荒地，自号东坡居士；游赤壁作《前赤壁赋》《念奴娇·赤壁怀古》《黄州寒食帖》，文学与思想升华。",
+    "ancient_place": "黄州",
+    "modern_place": "湖北 黄冈市",
+    "representative_works": [
+      {
+        "title": "念奴娇·赤壁怀古",
+        "content": "大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。……"
+      },
+      {
+        "title": "前赤壁赋",
+        "content": "壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。……"
+      },
+      {
+        "title": "东坡",
+        "content": "雨洗东坡月色清，市人行尽野人行。莫嫌荦确坡头路，自爱铿然曳杖声。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "王朝云",
+        "relation": "妾",
+        "description": "陪伴苏轼在黄州生活，后生下幼子苏遁"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼被贬期间给予精神支持"
+      },
+      {
+        "name": "张梦得",
+        "relation": "友人",
+        "description": "与苏轼同游赤壁，参与文学创作"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "四十八岁·丧子苏遁",
+    "start_year": 1083,
+    "end_year": 1083,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 115.45,
+    "latitude": 30.75,
+    "color": "灰色",
+    "content": "王朝云所生幼子苏遁夭折，苏轼承受晚年丧子之痛。",
+    "ancient_place": "黄州",
+    "modern_place": "湖北 黄冈市",
+    "representative_works": [
+      {
+        "title": "洗儿戏作",
+        "content": "人皆养子望聪明，我被聪明误一生。惟愿孩儿愚且鲁，无灾无难到公卿。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "王朝云",
+        "relation": "妾",
+        "description": "苏遁生母，与苏轼共同承受丧子之痛"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼丧子期间给予安慰和支持"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "四十九岁·离黄州·《题西林壁》",
+    "start_year": 1084,
+    "end_year": 1084,
+    "stage": "乌台诗案与黄州贬谪",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "黑色",
+    "content": "奉诏移汝州，离黄州游庐山，作《题西林壁》，充满人生哲思。",
+    "ancient_place": "庐山/西林寺",
+    "modern_place": "江西 九江市 庐山区",
+    "representative_works": [
+      {
+        "title": "题西林壁",
+        "content": "横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼离黄州时给予送别"
+      },
+      {
+        "name": "参寥子",
+        "relation": "友人",
+        "description": "陪伴苏轼游庐山，共同创作"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "五十岁·还朝·高太后垂帘",
+    "start_year": 1085,
+    "end_year": 1085,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "蓝色",
+    "content": "宋神宗驾崩，高太后执政，旧党执政，苏轼被召回京，一路升迁至翰林学士。",
+    "ancient_place": "汴京/开封府",
+    "modern_place": "河南 开封市",
+    "representative_works": [
+      {
+        "title": "司马温公行状",
+        "content": "（此时期主要进行政论与史论写作，如为司马光撰写的行状等）"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "高太后",
+        "relation": "执政者",
+        "description": "提拔苏轼，使其官复原职"
+      },
+      {
+        "name": "司马光",
+        "relation": "旧党领袖",
+        "description": "与苏轼政见相近，共同反对新法"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "与苏轼同朝为官，互相支持"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "朝堂风波·不趋时势",
+    "start_year": 1086,
+    "end_year": 1088,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 108.95,
+    "latitude": 34.26667,
+    "color": "红色",
+    "content": "不迎合司马光尽废新法，主张折中取舍，遭新旧两党夹击，自请外放。",
+    "ancient_place": "汴京/开封府",
+    "modern_place": "河南 开封市",
+    "representative_works": [
+      {
+        "title": "荔枝叹",
+        "content": "我愿天公怜赤子，莫生尤物来归州。……雨顺风调百谷登，民不饥寒为上瑞。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "司马光",
+        "relation": "旧党领袖",
+        "description": "苏轼对其尽废新法的主张持异议"
+      },
+      {
+        "name": "章惇",
+        "relation": "新党成员",
+        "description": "与苏轼政见不合，主张推行新法"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "与苏轼政见相近，共同主张折中"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "五十二岁·出知杭州·疏浚西湖",
+    "start_year": 1089,
+    "end_year": 1091,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 120.25,
+    "latitude": 30.46667,
+    "color": "红色",
+    "content": "再任杭州知州，疏浚西湖，以淤泥筑苏堤，造福一方，成为西湖标志性景观。",
+    "ancient_place": "杭州",
+    "modern_place": "浙江 杭州市",
+    "representative_works": [
+      {
+        "title": "八月十五日看潮五绝",
+        "content": "吴儿生长狎涛渊，冒利忘生不自怜。东海若知明主意，应教斥卤变桑田。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼任职杭州期间给予支持"
+      },
+      {
+        "name": "秦观",
+        "relation": "学生",
+        "description": "受苏轼提携，成为“苏门四学士”之一"
+      },
+      {
+        "name": "参寥子",
+        "relation": "友人",
+        "description": "与苏轼在杭州交往密切"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "辗转颍州、扬州、定州",
+    "start_year": 1091,
+    "end_year": 1093,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 114.5,
+    "latitude": 35.33333,
+    "color": "蓝色",
+    "content": "先后知颍州、扬州、定州，勤政爱民，维持地方安定。",
+    "ancient_place": "颍州/扬州/定州",
+    "modern_place": "安徽 阜阳市 / 江苏 扬州市 / 河北 定州市",
+    "representative_works": [
+      {
+        "title": "泛颍",
+        "content": "我性喜临水，得颍意甚奇。到官十日来，九日河之湄。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼辗转各地任职期间保持联系"
+      },
+      {
+        "name": "黄庭坚",
+        "relation": "学生",
+        "description": "受苏轼影响，成为“苏门四学士”之一"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "五十七岁·丧妻王闰之",
+    "start_year": 1093,
+    "end_year": 1093,
+    "stage": "旧党当政与元祐浮沉",
+    "longitude": 116.35,
+    "latitude": 33.48333,
+    "color": "蓝色",
+    "content": "妻子王闰之去世，相伴二十五年的家庭支柱离去；高太后病逝，哲宗亲政，新党复起。",
+    "ancient_place": "汴京/开封府",
+    "modern_place": "河南 开封市",
+    "representative_works": [
+      {
+        "title": "祭亡妻同安郡君文",
+        "content": "我曰归哉，行返丘园。……孰迎我门，孰馈我田。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "王闰之",
+        "relation": "妻子",
+        "description": "相伴二十五年的妻子，去世后苏轼悲痛不已"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼丧妻期间给予安慰"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "五十七岁·一贬惠州",
+    "start_year": 1094,
+    "end_year": 1094,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 114.68333,
+    "latitude": 23.18333,
+    "color": "黑色",
+    "content": "被新党打压，贬惠州安置，携王朝云与幼子苏过南下，心境苍凉。",
+    "ancient_place": "惠州",
+    "modern_place": "广东 惠州市",
+    "representative_works": [
+      {
+        "title": "十月二日初到惠州",
+        "content": "仿佛曾游岂梦中，欣然鸡犬识新丰。……"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "王朝云",
+        "relation": "妾",
+        "description": "陪伴苏轼南下惠州"
+      },
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "随苏轼南下惠州"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼被贬惠州时给予支持"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "惠州岁月",
+    "start_year": 1095,
+    "end_year": 1096,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 114.68333,
+    "latitude": 23.18333,
+    "color": "黑色",
+    "content": "作“日啖荔枝三百颗”苦中作乐；1096年王朝云病逝，苏轼再失挚爱。",
+    "ancient_place": "惠州",
+    "modern_place": "广东 惠州市",
+    "representative_works": [
+      {
+        "title": "食荔枝二首",
+        "content": "罗浮山下四时春，卢橘杨梅次第新。日啖荔枝三百颗，不辞长作岭南人。"
+      },
+      {
+        "title": "西江月·梅花",
+        "content": "玉骨那愁瘴雾，冰姿自有仙风。……高情已逐晓云空。不与梨花同梦。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "王朝云",
+        "relation": "妾",
+        "description": "在惠州期间病逝，苏轼再失挚爱"
+      },
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "在惠州陪伴苏轼"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "六十岁·再贬儋州",
+    "start_year": 1097,
+    "end_year": 1097,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "黑色",
+    "content": "60岁再贬海南儋州，渡海诀别家人，垂老投荒，陷入人生最低谷。",
+    "ancient_place": "昌化军/儋州",
+    "modern_place": "海南 儋州市",
+    "representative_works": [
+      {
+        "title": "六月二十日夜渡海",
+        "content": "参横斗转欲三更，苦雨终风也解晴。云散月明谁点缀？天容海色本澄清。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "随苏轼渡海前往儋州"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "在苏轼被贬儋州时给予支持"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "儋州三载·文明拓荒",
+    "start_year": 1098,
+    "end_year": 1100,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "黑色",
+    "content": "建桄榔庵，开坛讲学、劝农兴医，开启海南文教之风，深受百姓爱戴。",
+    "ancient_place": "儋州",
+    "modern_place": "海南 儋州市",
+    "representative_works": [
+      {
+        "title": "汲江煎茶",
+        "content": "活水还须活火烹，自临钓石取深清。……枯肠未易禁三碗，坐数荒村长短更。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "在儋州陪伴苏轼"
+      },
+      {
+        "name": "黎子云",
+        "relation": "当地友人",
+        "description": "与苏轼交往密切，支持其文教活动"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "六十三岁·遇赦北归",
+    "start_year": 1100,
+    "end_year": 1100,
+    "stage": "南荒贬谪与生死一线",
+    "longitude": 109.5,
+    "latitude": 20.16667,
+    "color": "灰色",
+    "content": "宋徽宗即位大赦，苏轼离海南北归，感慨“我本儋耳人”，对海南充满眷恋。",
+    "ancient_place": "儋州",
+    "modern_place": "海南 儋州市",
+    "representative_works": [
+      {
+        "title": "被酒独行，遍至子云、威、徽、先觉四黎之舍",
+        "content": "总角黎家三四童，口吹葱叶送迎翁。……莫作天涯万里意，溪边自有舞雩风。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "随苏轼北归"
+      },
+      {
+        "name": "黎子云",
+        "relation": "当地友人",
+        "description": "在苏轼北归时给予送别"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "六十四岁·《自题金山画像》",
+    "start_year": 1101,
+    "end_year": 1101,
+    "stage": "北归终程与诗魂归位",
+    "longitude": 119.73333,
+    "latitude": 32.35,
+    "color": "红色",
+    "content": "在金山寺题诗自评：“问汝平生功业，黄州惠州儋州”，总结一生坎坷与豁达。",
+    "ancient_place": "润州/金山寺",
+    "modern_place": "江苏 镇江市",
+    "representative_works": [
+      {
+        "title": "自题金山画像",
+        "content": "心似已灰之木，身如不系之舟。问汝平生功业，黄州惠州儋州。"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "在苏轼病重期间陪伴左右"
+      }
+    ]
+  },
+  {
+    "name": "苏轼",
+    "state": "病逝常州",
+    "start_year": 1101,
+    "end_year": 1101,
+    "stage": "北归终程与诗魂归位",
+    "longitude": 119.73333,
+    "latitude": 32.35,
+    "color": "蓝色",
+    "content": "1101年在常州病逝，享年66岁，苏辙遵遗愿葬于河南郏县，世称“三苏坟”，留千古文名。",
+    "ancient_place": "常州",
+    "modern_place": "江苏 常州市",
+    "representative_works": [
+      {
+        "title": "答径山琳长老",
+        "content": "与君皆丙子，各已三万日。一日一千偈，电往那容诘。……"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "苏过",
+        "relation": "幼子",
+        "description": "在苏轼病逝前陪伴左右"
+      },
+      {
+        "name": "苏辙",
+        "relation": "弟弟",
+        "description": "遵苏轼遗愿将其葬于河南郏县"
+      }
+    ]
+  }
 ]
