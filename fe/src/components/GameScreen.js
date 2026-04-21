@@ -9,6 +9,9 @@ import liBaiOptions from '../data/li_bai_option.json';
 import liQingzhaoOptions from '../data/li_qingzhao_option.json';
 import suShiOptions from '../data/su_shi_option.json';
 
+// AI对话功能开关
+const SHOW_AI_CHAT = false;
+
 const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const mapRef = useRef(null);
 	const mapInstanceRef = useRef(null);
@@ -41,7 +44,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	const [chatMessages, setChatMessages] = useState([]);
 	const [userInput, setUserInput] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
-	
+
 	// 同步showChoice到ref
 	useEffect(() => {
 		showChoiceRef.current = showChoice;
@@ -90,7 +93,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 	// 获取当前人物的关键抉择数据
 	const choiceData = useMemo(() => {
-		switch(player.name) {
+		switch (player.name) {
 			case '李白':
 				return liBaiOptions;
 			case '李清照':
@@ -151,7 +154,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 计算完整弧形路径（连接所有事件点）
 	const computeFullCurvePath = useCallback(() => {
 		if (!sortedEvents || sortedEvents.length < 2) return [];
-		
+
 		const fullPath = [];
 		for (let i = 0; i < sortedEvents.length - 1; i++) {
 			const currentEvent = sortedEvents[i];
@@ -160,7 +163,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				[currentEvent.longitude, currentEvent.latitude],
 				[nextEvent.longitude, nextEvent.latitude]
 			);
-			
+
 			if (curvePath) {
 				// 如果是第一段，添加所有点；否则跳过第一个点（避免重复）
 				const pointsToAdd = i === 0 ? curvePath : curvePath.slice(1);
@@ -173,9 +176,9 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 根据事件年份获取年龄对应的头像
 	const getAvatarForEvent = (event) => {
 		if (!event || !player.birthYear) return player.avatar || player.image;
-		
+
 		const age = event.start_year - player.birthYear;
-		
+
 		// 处理负数年龄（事件年份早于出生年份）
 		if (age < 0 || age <= 30) {
 			return player.avatarYoung || player.avatar || player.image;
@@ -189,14 +192,14 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 格式化诗作文本：统一标题格式，诗作内容一句一换行
 	const formatPoemText = (work) => {
 		if (!work) return '';
-		
+
 		// 处理标题：确保有书名号
 		let title = work.title || '';
 		if (title && !title.includes('《') && !title.includes('》')) {
 			// 如果没有书名号，加上
 			title = `《${title}》`;
 		}
-		
+
 		// 处理内容：一句一换行（逗号后不换行）
 		let content = work.content || '';
 		if (content) {
@@ -207,7 +210,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				.replace(/\n+/g, '\n')  // 合并多个换行
 				.trim();  // 去除首尾空白
 		}
-		
+
 		// 组合标题和内容
 		if (title && content) {
 			return `${title}\n${content}`;
@@ -226,14 +229,14 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			setPoemText('');
 			return;
 		}
-		
+
 		const currentEvent = sortedEvents[currentEventIndex];
 		if (!currentEvent || !currentEvent.representative_works || currentEvent.representative_works.length === 0) {
 			setShowPoemDialog(false);
 			setPoemText('');
 			return;
 		}
-		
+
 		// 获取第一个诗作并格式化
 		const firstWork = currentEvent.representative_works[0];
 		const text = formatPoemText(firstWork);
@@ -251,9 +254,9 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 处理抉择选择
 	const handleChoiceSelect = (optionIndex) => {
 		if (!currentChoice) return;
-		
+
 		const isCorrect = optionIndex === 1; // 第二个选项是正确的
-		
+
 		if (isCorrect) {
 			// 正确选择：显示与抉择年份相等的start_year的content
 			let correctContent = '';
@@ -265,7 +268,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 				// 如果没有对应年份的事件，显示当前事件的content作为后备
 				correctContent = sortedEvents[currentEventIndex].content || '';
 			}
-			
+
 			setChoiceResult('correct');
 			setChoiceResultContent(correctContent);
 			// 记录已完成的抉择
@@ -291,7 +294,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		setCurrentChoice(null);
 		setChoiceResult(null);
 		setChoiceResultContent('');
-		
+
 		// 如果有等待处理的抉择索引，前进到该事件
 		if (pendingChoiceIndex !== -1) {
 			const targetIndex = pendingChoiceIndex;
@@ -328,19 +331,19 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		if (currentEventIndex < sortedEvents.length - 1) {
 			const nextIndex = currentEventIndex + 1;
 			const nextEvent = sortedEvents[nextIndex];
-			
+
 			// 检查下一个事件是否有未完成的抉择
 			const hasUncompletedChoice = () => {
 				if (!nextEvent || !choiceData.length) return false;
-				const matchingChoice = choiceData.find(choice => 
+				const matchingChoice = choiceData.find(choice =>
 					choice.name === player.name && choice.year === nextEvent.start_year
 				);
 				return matchingChoice && !completedChoices.includes(matchingChoice.year);
 			};
-			
+
 			if (hasUncompletedChoice()) {
 				// 下一个事件有未完成的抉择，显示抉择但不前进
-				const matchingChoice = choiceData.find(choice => 
+				const matchingChoice = choiceData.find(choice =>
 					choice.name === player.name && choice.year === nextEvent.start_year
 				);
 				setCurrentChoice(matchingChoice);
@@ -391,16 +394,16 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		const deathYear = getDeathYear();
 		const age = deathYear - birthYear;
 		const era = player.era;
-		
+
 		const summaries = {
 			'李白': `青莲谪仙，诗酒人生。从碎叶城到长江畔，六十二载岁月，留下千首诗篇。你曾“仰天大笑出门去”，也曾“举杯消愁愁更愁”。官场失意，山水寄情，最终醉月而逝，将浪漫主义推向巅峰。`,
 			'李清照': `千古第一才女，婉约词宗。从明水闺秀到颠沛流离，七十一载春秋，见证两宋变迁。你既有“和羞走，倚门回首，却把青梅嗅”的少女情怀，也有“生当作人杰，死亦为鬼雄”的豪迈气概。词别是一家，易安永存。`,
 			'苏轼': `东坡居士，全才文豪。从眉山少年到儋州老翁，六十六载浮沉，历经三度贬谪。你既能“大江东去”，亦能“明月几时有”。黄州惠州儋州，成就了你的文学功业，更成就了“一蓑烟雨任平生”的旷达人生。`
 		};
-		
+
 		return summaries[player.name] || `${player.name}，${era}的杰出人物，${age}载人生，留下不朽篇章。`;
 	};
-	
+
 	// 获取死亡年份（从传记中提取或估算）
 	const getDeathYear = () => {
 		const bio = player.biography?.birthDeath || '';
@@ -435,9 +438,9 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 		const userMessage = userInput.trim();
 		setUserInput('');
-		
+
 		// 添加用户消息
-		const newMessages = [...chatMessages, { role: 'user', content: userMessage }];
+		const newMessages = [...chatMessages, {role: 'user', content: userMessage}];
 		setChatMessages(newMessages);
 		setIsLoading(true);
 
@@ -448,7 +451,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			const currentPlace = currentEvent?.ancient_place || '未知地点';
 			const currentState = currentEvent?.state || '未知状态';
 			const currentAge = currentYear - (player.birthYear || 0);
-			
+
 			// 调用后端API（相对路径，由nginx代理）
 			const response = await fetch('/api/chat', {
 				method: 'POST',
@@ -476,17 +479,17 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 			}
 
 			const data = await response.json();
-			
+
 			// 添加AI回复
-			setChatMessages(prev => [...prev, { 
-				role: 'assistant', 
-				content: data.response 
+			setChatMessages(prev => [...prev, {
+				role: 'assistant',
+				content: data.response
 			}]);
 		} catch (error) {
 			console.error('对话错误:', error);
-			setChatMessages(prev => [...prev, { 
-				role: 'assistant', 
-				content: `抱歉，我暂时无法回答。错误: ${error.message}` 
+			setChatMessages(prev => [...prev, {
+				role: 'assistant',
+				content: `抱歉，我暂时无法回答。错误: ${error.message}`
 			}]);
 		} finally {
 			setIsLoading(false);
@@ -504,15 +507,15 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 	// 检查当前事件是否有关键抉择
 	useEffect(() => {
 		if (!sortedEvents.length || !choiceData.length) return;
-		
+
 		const currentEvent = sortedEvents[currentEventIndex];
 		if (!currentEvent) return;
-		
+
 		// 查找与当前事件年份匹配的抉择
-		const matchingChoice = choiceData.find(choice => 
+		const matchingChoice = choiceData.find(choice =>
 			choice.name === player.name && choice.year === currentEvent.start_year
 		);
-		
+
 		// 如果找到了匹配的抉择且尚未完成
 		if (matchingChoice && !completedChoices.includes(matchingChoice.year)) {
 			setCurrentChoice(matchingChoice);
@@ -626,14 +629,14 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		if (!isMapLoaded || !showAllLines || !sortedEvents.length) return;
 		const AMap = amapRef.current;
 		const map = mapInstanceRef.current;
-		
+
 		// 清除旧的曲线（包括单条弧线）
 		if (polylineRef.current) polylineRef.current.setMap(null);
-		
+
 		// 创建完整的弧形轨迹线
 		const fullPath = computeFullCurvePath();
 		if (fullPath.length === 0) return;
-		
+
 		const polyline = new AMap.Polyline({
 			path: fullPath,
 			showDir: true,
@@ -644,7 +647,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 		});
 		polyline.setMap(map);
 		polylineRef.current = polyline;
-		
+
 		// 调整地图视野以显示完整轨迹
 		setTimeout(() => {
 			if (fullPath.length > 0) {
@@ -719,25 +722,27 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						</div>
 						<div className="choice-modal-content">
 							<p className="choice-description">{currentChoice.description}</p>
-							
-							<div style={{ textAlign: 'center', margin: '15px 0' }}>
-								<button 
-									className="btn-chinese"
-									onClick={toggleChat}
-									style={{
-										padding: '8px 16px',
-										fontSize: '0.9rem',
-										background: '#8E2323',
-										color: 'white',
-										border: 'none',
-										borderRadius: '4px',
-										cursor: 'pointer'
-									}}
-								>
-									与诗人对话
-								</button>
-							</div>
-							
+
+							{SHOW_AI_CHAT && (
+								<div style={{textAlign: 'center', margin: '15px 0'}}>
+									<button
+										className="btn-chinese"
+										onClick={toggleChat}
+										style={{
+											padding: '8px 16px',
+											fontSize: '0.9rem',
+											background: '#8E2323',
+											color: 'white',
+											border: 'none',
+											borderRadius: '4px',
+											cursor: 'pointer'
+										}}
+									>
+										与诗人对话
+									</button>
+								</div>
+							)}
+
 							{!choiceResult ? (
 								<div className="choice-options">
 									{currentChoice.option.map((optionText, index) => (
@@ -755,7 +760,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 									<div className={`result-content ${choiceResult === 'correct' ? 'correct' : 'wrong'}`}>
 										{choiceResultContent}
 									</div>
-									<div className="choice-result-actions" style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+									<div className="choice-result-actions" style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
 										{choiceResult === 'wrong' ? (
 											<button className="btn-chinese" onClick={handleRetryChoice}>
 												重新选择
@@ -765,20 +770,22 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 												继续游戏
 											</button>
 										)}
-										<button 
-											className="btn-chinese"
-											onClick={toggleChat}
-											style={{
-												background: '#8E2323',
-												color: 'white',
-												border: 'none',
-												borderRadius: '4px',
-												padding: '8px 16px',
-												cursor: 'pointer'
-											}}
-										>
-											与诗人对话
-										</button>
+										{SHOW_AI_CHAT && (
+											<button
+												className="btn-chinese"
+												onClick={toggleChat}
+												style={{
+													background: '#8E2323',
+													color: 'white',
+													border: 'none',
+													borderRadius: '4px',
+													padding: '8px 16px',
+													cursor: 'pointer'
+												}}
+											>
+												与诗人对话
+											</button>
+										)}
 									</div>
 								</div>
 							)}
@@ -795,25 +802,27 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						<div className="character-name" style={{fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-color)'}}>{player.name}</div>
 						<div className="character-era" style={{fontSize: '0.9rem', color: '#666'}}>{player.era}</div>
 					</div>
-					
+
 					{/* 对话按钮 */}
-					<button 
-						className="btn-chinese"
-						onClick={toggleChat}
-						style={{
-							marginLeft: '0.5rem',
-							padding: '0.4rem 0.8rem',
-							fontSize: '0.85rem',
-							background: '#8E2323',
-							color: 'white',
-							border: 'none',
-							borderRadius: '4px',
-							cursor: 'pointer'
-						}}
-					>
-						{showChat ? '关闭对话' : '与诗人对话'}
-					</button>
-					
+					{SHOW_AI_CHAT && (
+						<button
+							className="btn-chinese"
+							onClick={toggleChat}
+							style={{
+								marginLeft: '0.5rem',
+								padding: '0.4rem 0.8rem',
+								fontSize: '0.85rem',
+								background: '#8E2323',
+								color: 'white',
+								border: 'none',
+								borderRadius: '4px',
+								cursor: 'pointer'
+							}}
+						>
+							{showChat ? '关闭对话' : '与诗人对话'}
+						</button>
+					)}
+
 					{/* 诗作对话框 */}
 					{showPoemDialog && (
 						<div style={{
@@ -853,7 +862,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								borderBottom: '10px solid transparent',
 								borderRight: '10px solid rgba(255, 252, 240, 0.95)'
 							}} />
-							
+
 
 							<div style={{
 								whiteSpace: 'pre-wrap',
@@ -864,15 +873,17 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 							</div>
 						</div>
 					)}
-					
+
 					{/* 对话对话框 */}
-					{showChat && (
+					{SHOW_AI_CHAT && showChat && (
 						<div style={{
-							position: 'absolute',
-							left: 'calc(100% + 10px)',
-							top: 0,
-							width: '400px',
+							position: 'fixed',
+							right: '20px',
+							top: '50%',
+							transform: 'translateY(-50%)',
+							width: '350px',
 							height: '500px',
+							maxHeight: '80vh',
 							background: 'rgba(255, 252, 240, 0.98)',
 							border: '2px solid #8E2323',
 							borderRadius: '12px',
@@ -884,6 +895,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						}}>
 							{/* 对话框小三角 */}
 							<div style={{
+								display: 'none',
 								position: 'absolute',
 								left: '-10px',
 								top: '30px',
@@ -894,6 +906,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								borderRight: '10px solid #8E2323'
 							}} />
 							<div style={{
+								display: 'none',
 								position: 'absolute',
 								left: '-8px',
 								top: '30px',
@@ -903,7 +916,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								borderBottom: '10px solid transparent',
 								borderRight: '10px solid rgba(255, 252, 240, 0.98)'
 							}} />
-							
+
 							{/* 对话框标题 */}
 							<div style={{
 								padding: '12px 16px',
@@ -917,7 +930,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								alignItems: 'center'
 							}}>
 								<span>与{player.name}对话</span>
-								<button 
+								<button
 									onClick={toggleChat}
 									style={{
 										background: 'transparent',
@@ -930,7 +943,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 									×
 								</button>
 							</div>
-							
+
 							{/* 消息区域 */}
 							<div style={{
 								flex: 1,
@@ -941,7 +954,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 								lineHeight: 1.6
 							}}>
 								{chatMessages.filter(msg => msg.role !== 'system').map((message, index) => (
-									<div 
+									<div
 										key={index}
 										style={{
 											marginBottom: '12px',
@@ -973,7 +986,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 										</div>
 									</div>
 								))}
-								
+
 								{isLoading && (
 									<div style={{
 										display: 'flex',
@@ -1000,7 +1013,7 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 									</div>
 								)}
 							</div>
-							
+
 							{/* 输入区域 */}
 							<div style={{
 								padding: '12px 16px',
@@ -1059,11 +1072,45 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 
 			{/* 底部 UI */}
 			<div className="bottom-panel">
-				<div className="mb-3" style={{fontWeight: 'bold'}}>
-					{sortedEvents[currentEventIndex]?.state} ({sortedEvents[currentEventIndex]?.start_year}年)
+				{/* 标题和古今地名容器 - 单独包装不影响其他元素 */}
+				<div style={{position: 'relative', width: '100%', marginBottom: '1rem'}}>
+					{/* 标题居中 */}
+					<div style={{fontWeight: 'bold', textAlign: 'center'}}>
+						{sortedEvents[currentEventIndex]?.state} ({sortedEvents[currentEventIndex]?.start_year}年)
+					</div>
+
+					{/* 古今地名显示 - 绝对定位在左上角 */}
+					{(sortedEvents[currentEventIndex]?.ancient_place || sortedEvents[currentEventIndex]?.modern_place) && (
+						<div style={{
+							position: 'absolute',
+							left: '-10px',
+							top: '-20px',
+							padding: '0.4rem',
+							background: 'rgba(255, 252, 240, 0.9)',
+							border: '1px solid #c09553',
+							borderRadius: '6px',
+							fontFamily: '"STSong", "SimSun", serif',
+							fontSize: '0.8rem',
+							maxWidth: '280px',
+							textAlign: 'left'
+						}}>
+							<div style={{display: 'flex', flexDirection: 'column', gap: '0.2rem'}}>
+								{sortedEvents[currentEventIndex]?.ancient_place && (
+									<div style={{display: 'flex', alignItems: 'flex-start', gap: '0.3rem'}}>
+										<span style={{color: '#8E2323', fontWeight: 'bold', minWidth: '2.5rem'}}>古地名：</span>
+										<span style={{color: '#333'}}>{sortedEvents[currentEventIndex]?.ancient_place}</span>
+									</div>
+								)}
+								{sortedEvents[currentEventIndex]?.modern_place && (
+									<div style={{display: 'flex', alignItems: 'flex-start', gap: '0.3rem'}}>
+										<span style={{color: '#8E2323', fontWeight: 'bold', minWidth: '2.5rem'}}>今地名：</span>
+										<span style={{color: '#333'}}>{sortedEvents[currentEventIndex]?.modern_place}</span>
+									</div>
+								)}
+							</div>
+						</div>
+					)}
 				</div>
-
-
 
 				{/* 时间轴逻辑 */}
 				<div className="timeline-container">
@@ -1108,12 +1155,12 @@ const GameScreen = ({player, onBackToSelect, onManualTrigger}) => {
 						}}>
 							人生总结
 						</div>
-						<div style={{ whiteSpace: 'pre-wrap' }}>
+						<div style={{whiteSpace: 'pre-wrap'}}>
 							{summaryText}
 						</div>
 					</div>
 				)}
-				
+
 				{/* 按钮组 */}
 				{!showSummary && (
 					<div className="btn-group">
