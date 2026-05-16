@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>史·迹 — 前端项目答辩介绍</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #8E2323;
+    --primary-dark: #5C1919;
+    --gold: #C09553;
+    --bg: #F7F3E8;
+    --text: #2C2C2C;
+    --gray: #666050;
+    --light: #FFFCF0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 2rem;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  .cover {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 3rem;
+  }
+  .cover h1 {
+    font-size: 4rem;
+    color: var(--primary);
+    letter-spacing: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .cover .subtitle {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+  .cover .badge {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.3rem 1.2rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+    box-shadow: 2px 2px 0 var(--gold);
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(247,243,232,0.95);
+    backdrop-filter: blur(8px);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--gold);
+    margin-bottom: 2rem;
+    z-index: 100;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.5rem;
+    justify-content: center;
+  }
+  nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  nav a:hover { border-color: var(--gold); }
+
+  section { margin-bottom: 3rem; }
+  h2 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    border-left: 4px solid var(--gold);
+    padding-left: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--primary-dark);
+    margin: 1.2rem 0 0.6rem;
+  }
+
+  .card {
+    background: var(--light);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin-bottom: 0.3rem; }
+  strong { color: var(--primary); }
+
+  .arch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--light);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+  .arch-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .arch-box {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+    min-width: 90px;
+    box-shadow: 2px 2px 0 var(--gold);
+  }
+  .arch-box.active {
+    background: #2C2C2C;
+    box-shadow: 2px 2px 0 var(--gold);
+  }
+  .arch-box.gold {
+    background: var(--gold);
+    color: var(--text);
+  }
+  .arrow { color: var(--gold); font-size: 1.5rem; }
+
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--light);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+  .flow-step {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .flow-arrow { color: var(--gold); font-size: 1.2rem; }
+
+  pre {
+    background: #1a1a1a;
+    color: #e0dcd5;
+    padding: 1rem 1.2rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+  }
+  code { font-family: 'Courier New', monospace; }
+  .inline-code {
+    background: #e8e2d0;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: var(--primary);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    border: 1px solid var(--gold);
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+  }
+  th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+  }
+  td { background: var(--light); }
+
+  .tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--text);
+    padding: 0.1rem 0.6rem;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    margin: 0.15rem;
+  }
+
+  .qa-item {
+    margin-bottom: 1.5rem;
+  }
+  .qa-q {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+  }
+  .qa-a {
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--gold);
+    color: var(--text);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    .cover h1 { font-size: 2.5rem; }
+    nav ul { gap: 0.3rem 0.8rem; }
+    .flow-step { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 封面 -->
+  <div class="cover">
+    <h1>史·迹</h1>
+    <p class="subtitle">历史人物交互地图 — 前端项目答辩</p>
+    <div>
+      <span class="badge">React 19</span>
+      <span class="badge">高德地图 AMap</span>
+      <span class="badge">Create React App</span>
+      <span class="badge">Docker + Nginx</span>
+    </div>
+  </div>
+
+  <!-- 导航 -->
+  <nav>
+    <ul>
+      <li><a href="#overview">项目概览</a></li>
+      <li><a href="#stack">技术栈</a></li>
+      <li><a href="#arch">架构设计</a></li>
+      <li><a href="#flow">页面流程</a></li>
+      <li><a href="#components">核心组件</a></li>
+      <li><a href="#data">数据模型</a></li>
+      <li><a href="#highlights">技术亮点</a></li>
+      <li><a href="#design">设计系统</a></li>
+      <li><a href="#deploy">部署</a></li>
+      <li><a href="#qa">常见问答</a></li>
+    </ul>
+  </nav>
+
+  <!-- 1. 项目概览 -->
+  <section id="overview">
+    <h2>一、项目概览</h2>
+    <div class="card">
+      <p><strong>史·迹</strong> 是一款以中国历史人物为主线的<strong>交互式地图探索应用</strong>。用户选择人物后，在地图上沿着时间轴推进人生轨迹，在关键节点做出抉择，配合诗作展示与生平回顾，沉浸式感受历史人物的传奇一生。</p>
+      <ul>
+        <li><strong>三位人物</strong>：李白（唐朝）、李清照（宋朝）、苏轼（宋朝）</li>
+        <li><strong>核心玩法</strong>：地图标记 → 时间线推进 → 关键抉择（二选一） → 诗作弹窗 → 回顾一生</li>
+        <li><strong>前端工程</strong>：React 19 + 高德地图 JS API 2.0，单页应用</li>
+        <li><strong>数据</strong>：本地 JSON 文件驱动，每人约 20-30 个关键事件节点</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. 技术栈 -->
+  <section id="stack">
+    <h2>二、技术栈</h2>
+    <table>
+      <tr><th>类别</th><th>技术</th><th>用途</th></tr>
+      <tr><td>框架</td><td>React 19</td><td>UI 组件化构建，Hooks 管理状态与副作用</td></tr>
+      <tr><td>脚手架</td><td>Create React App</td><td>项目初始化，Webpack 构建，Jest 测试</td></tr>
+      <tr><td>地图</td><td>高德地图 JS API 2.0 + @amap/amap-jsapi-loader</td><td>动态加载地图，Marker / Polyline 绘制轨迹</td></tr>
+      <tr><td>CSS</td><td>原生 CSS + CSS 自定义属性</td><td>中式美学设计系统（宫墙红、琉璃金、熟宣色）</td></tr>
+      <tr><td>字体</td><td>Noto Serif SC / STSong / Kaiti</td><td>书卷气息的中文排版</td></tr>
+      <tr><td>数据</td><td>本地 JSON 文件</td><td>人物事件数据、关键抉择数据</td></tr>
+      <tr><td>测试</td><td>Jest + React Testing Library</td><td>基础冒烟测试</td></tr>
+      <tr><td>部署</td><td>Docker (Nginx) / GitHub Actions</td><td>SPA 路由重写、Gzip 压缩、静态缓存</td></tr>
+    </table>
+  </section>
+
+  <!-- 3. 架构设计 -->
+  <section id="arch">
+    <h2>三、架构设计</h2>
+
+    <h3>3.1 组件树</h3>
+    <div class="arch">
+      <div class="arch-box active">App (HistoricalGame)</div>
+      <div class="arrow">↓ route by currentView</div>
+      <div class="arch-row">
+        <div class="arch-box">StartScreen</div>
+        <div class="arch-box">SelectScreen</div>
+        <div class="arch-box">GameScreen</div>
+        <div class="arch-box">DialogScreen</div>
+        <div class="arch-box">EndScreen</div>
+      </div>
+      <div class="arrow">└─ GameScreen 内部</div>
+      <div class="arch-row">
+        <div class="arch-box gold">AMap 实例</div>
+        <div class="arch-box gold">RightSidebar</div>
+        <div class="arch-box gold">时间轴</div>
+        <div class="arch-box gold">抉择弹窗</div>
+      </div>
+    </div>
+    <p><span class="tag">自顶向下</span> <code>App.js</code> 持有 <span class="inline-code">currentView</span> 状态，通过条件渲染切换 5 个屏幕级组件。无路由库，纯 <span class="inline-code">useState</span> 驱动。</p>
+
+    <h3>3.2 状态管理</h3>
+    <div class="card">
+      <ul>
+        <li><strong>全局状态</strong>：<span class="inline-code">currentView</span>（5 个视图）、<span class="inline-code">player</span>（当前选中人物）— 集中在 App.js</li>
+        <li><strong>局部状态</strong>：<span class="inline-code">currentEventIndex</span>、<span class="inline-code">showChoice</span>、<span class="inline-code">completedChoices</span>、<span class="inline-code">choiceResult</span> 等 — 各组件内部管理</li>
+        <li><strong>Ref 同步</strong>：使用 <span class="inline-code">useRef</span> 同步 <span class="inline-code">showChoice</span> / <span class="inline-code">choiceResult</span>，解决 useEffect 闭包陷阱</li>
+        <li><strong>Memo 优化</strong>：<span class="inline-code">useMemo</span> 计算 <span class="inline-code">sortedEvents</span>（去重 + 排序 + 过滤）、<span class="inline-code">choiceData</span>、<span class="inline-code">eventPaths</span></li>
+        <li><strong>无第三方状态库</strong>：项目规模适中，React 内置 Hooks 足够应对</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. 页面流程 -->
+  <section id="flow">
+    <h2>四、页面流程</h2>
+    <div class="flow">
+      <span class="flow-step">StartScreen</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">SelectScreen</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">GameScreen</span>
+      <span class="flow-arrow">↕</span>
+      <span class="flow-step">DialogScreen</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">EndScreen</span>
+    </div>
+
+    <table>
+      <tr><th>视图</th><th>组件</th><th>核心逻辑</th></tr>
+      <tr>
+        <td>开始页</td>
+        <td>StartScreen</td>
+        <td>展示标题"史·迹"，点击"开始体验"进入选择页</td>
+      </tr>
+      <tr>
+        <td>角色选择</td>
+        <td>SelectScreen</td>
+        <td>
+          三张可翻转卡片（李白/李清照/苏轼），正面展示画像，背面展示详细传记（生卒年、出生地、家世、配偶、文学成就等 12 个字段）。<br/>
+          点击"选择此角色"触发卡片飞入动画，2 秒过渡后进入地图。
+        </td>
+      </tr>
+      <tr>
+        <td>地图探索</td>
+        <td>GameScreen</td>
+        <td><strong>最核心组件</strong>。高德地图 + 人物头像 + 时间轴 + 右侧事件面板 + 诗作弹窗 + 关键抉择系统 + 回顾一生</td>
+      </tr>
+      <tr>
+        <td>抉择对话</td>
+        <td>DialogScreen</td>
+        <td>在关键抉择节点展示的交互界面，供用户做出历史选择。目前为静态演示页面</td>
+      </tr>
+      <tr>
+        <td>结束页</td>
+        <td>EndScreen</td>
+        <td>展示"卒"大字，生平总结，可重新开始</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 5. 核心组件详解 -->
+  <section id="components">
+    <h2>五、核心组件详解</h2>
+
+    <h3>5.1 GameScreen — 地图探索（~1200 行，最复杂组件）</h3>
+    <div class="card">
+      <ol>
+        <li><strong>地图初始化</strong>：<span class="inline-code">AMapLoader.load()</span> 动态加载高德地图 JS API 2.0，创建 <span class="inline-code">AMap.Map</span> 实例，设置自定义暖色古风主题样式</li>
+        <li><strong>Marker 管理</strong>：每位人物有专属 PNG 图标（normal 32×32 / selected 40×40），当前选中节点高亮放大</li>
+        <li><strong>弧形轨迹线</strong>：两点之间使用 <strong>二次贝塞尔曲线</strong> 计算路径（10 个采样点），<span class="inline-code">showDir: true</span> 显示方向箭头，颜色 <code>#8E2323</code></li>
+        <li><strong>时间轴</strong>：底部横向时间轴，每个事件对应一个圆点标记。事件按年份排序，同年仅保留一个（优先选包含"岁"字的）。位置按年份中点线性映射</li>
+        <li><strong>关键抉择系统</strong>：在特定年份触发二选一，第二个选项永远是正确答案。错误选项显示悲剧结局描述，正确选项推进剧情。通过 <span class="inline-code">completedChoices</span> 数组防止重复触发</li>
+        <li><strong>诗作弹窗</strong>：事件若有 <span class="inline-code">representative_works</span> 字段，在头像旁弹出古风对话框展示诗作（自动格式化：标题加书名号、内容一句一换行）</li>
+        <li><strong>回顾一生</strong>：调用 <span class="inline-code">computeFullCurvePath()</span> 绘制所有事件间的完整弧线路径，展示总结文案，调用 <span class="inline-code">map.setFitView()</span> 缩放至全部轨迹</li>
+        <li><strong>古今地名显示</strong>：底部面板展示"古地名 / 今地名"对照</li>
+        <li><strong>头像年龄变化</strong>：根据事件年份与出生年份计算年龄，匹配青年 / 中年 / 老年三组头像</li>
+      </ol>
+    </div>
+
+    <h3>5.2 SelectScreen — 角色选择</h3>
+    <div class="card">
+      <ul>
+        <li><strong>CSS 3D 翻转卡片</strong>：通过 <span class="inline-code">transform: rotateY(180deg)</span> 实现正反面切换</li>
+        <li><strong>传记信息</strong>：卡片背面展示 12 个传记字段（人物特征配置驱动，字段映射在 constants 中集中管理）</li>
+        <li><strong>飞入动画</strong>：选中角色后，克隆卡片元素，计算从原位置到容器中心的偏移量，使用 CSS transform 过渡（translate + scale），2 秒后切换到 GameScreen</li>
+      </ul>
+    </div>
+
+    <h3>5.3 RightSidebar — 事件详情面板</h3>
+    <div class="card">
+      <ul>
+        <li><strong>可折叠 + 可固定</strong>：桌面端默认展开并固定，移动端默认折叠；鼠标悬浮展开，移出后折叠；支持手动固定</li>
+        <li><strong>关系图</strong>：使用 <strong>纯 SVG</strong> 绘制人际关系网络，中心节点为当前人物，周边节点按角度均匀分布在圆周上。连线中间显示关系文本（如"父亲""配偶"），文本沿连线方向自动旋转</li>
+        <li><strong>颜色映射</strong>：根据事件 <span class="inline-code">color</span> 字段（中文名如"蓝色""红色"）映射到 CSS 颜色值，动态设置文字颜色</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. 数据模型 -->
+  <section id="data">
+    <h2>六、数据模型</h2>
+
+    <h3>6.1 事件数据（<span class="inline-code">li_bai.json</span> 等）</h3>
+    <pre>[
+  {
+    "name": "李白",
+    "state": "降生·太白入梦",       // 事件标题 + 年龄
+    "start_year": 701,
+    "end_year": 701,
+    "stage": "碎叶",                // 古地名简称
+    "longitude": 75.29,            // 高德坐标系
+    "latitude": 42.84,
+    "color": "蓝色",
+    "content": "公元701年生于碎叶城...",
+    "ancient_place": "碎叶城",
+    "modern_place": "吉尔吉斯斯坦 托克马克",
+    "relationships": [             // 关系图数据
+      { "name": "李客", "relation": "父亲", "description": "隐姓埋名的富商" }
+    ],
+    "representative_works": [      // 诗作数据
+      { "title": "静夜思", "content": "床前明月光，疑是地上霜。举头望明月，低头思故乡。" }
+    ]
+  }
+]</pre>
+
+    <h3>6.2 关键抉择数据（<span class="inline-code">li_bai_option.json</span> 等）</h3>
+    <pre>[
+  {
+    "description": "时年廿五，久居蜀地，胸有凌云之志...",
+    "end_content": "终老蜀地，才名不出乡关...",   // 选错时的结局
+    "name": "李白",
+    "option": [
+      "羁留蜀中，守土不出",          // 错误选项 (index 0)
+      "仗剑去国，辞亲远游"           // 正确选项 (index 1)
+    ],
+    "year": 725                     // 匹配事件的 start_year 触发
+  }
+]</pre>
+
+    <h3>6.3 人物配置（<span class="inline-code">characters.js</span>）</h3>
+    <pre>{
+  id: 1,
+  name: '李白',
+  era: '唐朝',
+  events: liBaiData,            // 导入的 JSON 事件数组
+  image: 'images/libai/libai_cover.png',
+  avatarYoung/Middle/Old,       // 分年龄头像
+  birthYear: 701,
+  markerIcon: 'images/markers/libai/point.png',
+  markerIconSelected: 'images/markers/libai/point_selected.png',
+  biography: { birthDeath, birthPlace, familyBackground, ... }
+}</pre>
+  </section>
+
+  <!-- 7. 技术亮点 -->
+  <section id="highlights">
+    <h2>七、技术亮点</h2>
+
+    <div class="card">
+      <h3>贝塞尔曲线弧形轨迹</h3>
+      <p>不使用高德地图内置的直线连接，手动计算<strong>二次贝塞尔曲线</strong>（10 个采样点），轨迹线呈优雅的弧形上翘，避免折线段尖角。控制点垂直于两点连线方向，偏移距离为线段长度的 0.3 倍。</p>
+      <pre>const controlPoint = [
+  (lng1 + lng2) / 2 + perpX * offset,
+  (lat1 + lat2) / 2 + perpY * offset
+];
+// B(t) = (1-t)²·P₀ + 2(1-t)t·P₁ + t²·P₂</pre>
+    </div>
+
+    <div class="card">
+      <h3>高德地图与 React 生命周期协调</h3>
+      <p>地图实例存储在 <span class="inline-code">useRef</span> 中，不触发渲染。通过 4 个独立 <span class="inline-code">useEffect</span> 分层管理不同职责：</p>
+      <ol>
+        <li>地图创建（空依赖，仅执行一次）</li>
+        <li>Marker 初始化 + 静态线段（依赖人物数据变化）</li>
+        <li>弧形箭头绘制（依赖 <span class="inline-code">linePath</span>）</li>
+        <li>Marker 高亮切换 + 视角移动（依赖 <span class="inline-code">currentEventIndex</span>）</li>
+      </ol>
+      <p>使用 <span class="inline-code">setFitView</span> 自动缩放地图至适合所有标记点，回顾一生时缩放至完整轨迹。</p>
+    </div>
+
+    <div class="card">
+      <h3>事件去重与排序</h3>
+      <p>原始数据每人超 100 条事件，前端做三层处理：</p>
+      <ul>
+        <li><strong>JSON 序列化去重</strong>：<span class="inline-code">new Set(events.map(JSON.stringify))</span></li>
+        <li><strong>按年份排序</strong>：<span class="inline-code">sort((a,b) => a.start_year - b.start_year)</span></li>
+        <li><strong>同年合并</strong>：同年仅保留一条，优先保留包含"岁"字的状态描述</li>
+      </ul>
+      <p>最终每个角色约 20-30 个关键节点展示在地图和时间轴上。</p>
+    </div>
+
+    <div class="card">
+      <h3>关键抉择引擎</h3>
+      <p>每个角色在人生关键节点有 3-4 个抉择，触发逻辑完整闭环：</p>
+      <ul>
+        <li>切换事件节点时自动匹配年份查找抉择数据</li>
+        <li>已完成抉择（<span class="inline-code">completedChoices</span>）不再重复触发</li>
+        <li>正确 → 显示真实历史故事，继续推进；错误 → 显示"if 历史"悲剧结局，可重新选择</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>SVG 关系图</h3>
+      <p>纯 <strong>SVG</strong> 实现人物关系网，不依赖任何第三方图表库。周边节点按角度均匀分布在圆周上，连线中点显示关系文本，文本沿连线方向自动旋转避免倒置。</p>
+    </div>
+
+    <div class="card">
+      <h3>中式设计系统</h3>
+      <p>以 CSS 自定义属性构建完整的设计语言：</p>
+      <pre>--primary-color: #8E2323;  /* 宫墙红 */
+--warning-color: #C09553; /* 琉璃金 */
+--light-bg: #F7F3E8;      /* 熟宣色 */
+--success-color: #3D675B; /* 墨玉绿 */</pre>
+      <p>按钮模拟"印章+描金"效果（金色阴影）；字体选用衬线 / 楷体；背景纹理由宣纸纹理叠加。</p>
+    </div>
+
+    <div class="card">
+      <h3>年龄感知头像系统</h3>
+      <p>每位人物配有青年、中年、老年三组头像，系统根据事件年份与出生年份差值自动切换：≤30 岁用青年，31-50 岁用中年，≥51 岁用老年。</p>
+    </div>
+  </section>
+
+  <!-- 8. 设计系统 -->
+  <section id="design">
+    <h2>八、设计系统</h2>
+    <div class="card">
+      <table>
+        <tr><th>Token</th><th>色值</th><th>语义</th><th>应用</th></tr>
+        <tr><td>--primary-color</td><td><span style="display:inline-block;width:20px;height:20px;background:#8E2323;vertical-align:middle;border-radius:2px;"></span> #8E2323</td><td>宫墙红</td><td>按钮、标题、高亮</td></tr>
+        <tr><td>--warning-color</td><td><span style="display:inline-block;width:20px;height:20px;background:#C09553;vertical-align:middle;border-radius:2px;"></span> #C09553</td><td>琉璃金</td><td>边框、阴影、装饰线</td></tr>
+        <tr><td>--light-bg</td><td><span style="display:inline-block;width:20px;height:20px;background:#F7F3E8;vertical-align:middle;border-radius:2px;"></span> #F7F3E8</td><td>熟宣色</td><td>全局背景</td></tr>
+        <tr><td>--dark-bg</td><td><span style="display:inline-block;width:20px;height:20px;background:#1A1A1A;vertical-align:middle;border-radius:2px;"></span> #1A1A1A</td><td>墨色</td><td>暗色背景</td></tr>
+        <tr><td>--success-color</td><td><span style="display:inline-block;width:20px;height:20px;background:#3D675B;vertical-align:middle;border-radius:2px;"></span> #3D675B</td><td>墨玉绿</td><td>成功 / 正确</td></tr>
+      </table>
+      <p style="margin-top:0.8rem;">
+        <strong>字体</strong>：Noto Serif SC（标题）、STKaiti / Kaiti（正文+按钮）、STSong / SimSun（辅助）<br/>
+        <strong>圆角</strong>：极小（2-4px），模拟方正古籍感<br/>
+        <strong>阴影</strong>：2px 2px 0 金色（模拟描金 / 印章效果）<br/>
+        <strong>动画</strong>：inkSpread（水墨展开效果，opacity + blur + scale）
+      </p>
+    </div>
+  </section>
+
+  <!-- 9. 部署与工程 -->
+  <section id="deploy">
+    <h2>九、部署与工程</h2>
+    <div class="card">
+      <h3>开发</h3>
+      <pre>cd fe && npm install && npm start    # localhost:3000</pre>
+
+      <h3>构建</h3>
+      <pre>npm run build   # 输出到 fe/build/</pre>
+
+      <h3>Docker 部署（Nginx）</h3>
+      <pre># nginx.conf 关键配置
+location / {
+  try_files $uri $uri/ /index.html;  # SPA 路由重写
+}</pre>
+      <p>镜像采<strong>多阶段构建</strong>：Stage 1 用 Node 18 构建，Stage 2 用 Nginx Alpine 运行。配置 Gzip 压缩、静态资源一年缓存、隐藏文件访问拦截。</p>
+
+      <h3>GitHub Pages</h3>
+      <p>push 到 <span class="inline-code">main</span> 触发 GitHub Actions，自动构建前端并部署到 GitHub Pages。</p>
+    </div>
+  </section>
+
+  <!-- 10. 常见答辩问答 -->
+  <section id="qa">
+    <h2>十、常见答辩问答</h2>
+
+    <div class="card">
+      <div class="qa-item">
+        <div class="qa-q">Q1：为什么不用路由库而是用 useState 控制视图切换？</div>
+        <div class="qa-a">项目只有 5 个页面，且无深层次嵌套路由需求，用 <span class="inline-code">useState</span> 做条件渲染更轻量，避免了 react-router 的额外 bundle 体积。如果后续需要支持 URL 参数（如 /character/li-bai）、浏览器前进后退，再引入路由库也不迟。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2：高德地图的 API Key 直接写在前端安全吗？</div>
+        <div class="qa-a">目前确实是硬编码在 <span class="inline-code">GameScreen.js</span> 中的。生产环境应通过环境变量注入（<span class="inline-code">process.env.REACT_APP_AMAP_KEY</span>），配合 API 域名白名单限制使用范围。当前作为演示项目问题不大，但后续改进方向明确。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3：事件去重为什么要用 JSON.stringify 而不是按 ID 去重？</div>
+        <div class="qa-a">原始数据没有唯一 ID 字段，且部分事件内容相同但顺序不同的情况需要彻底去重。JSON 序列化能保证内容完全一致的条目被合并。配合 Set 结构，代码简洁且可靠。后续数据量增大后应给事件添加唯一 <span class="inline-code">id</span>，改用 id 去重更高效。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q4：useRef 在地图中起到了什么关键作用？</div>
+        <div class="qa-a">三个关键用途：① 存储 AMap 和 Map 实例，避免地图对象参与 React 渲染引发重渲染；② 同步 <span class="inline-code">showChoice</span> 和 <span class="inline-code">choiceResult</span> 的最新值给 useEffect，解决闭包中拿到过期状态的问题；③ 存储 Marker 和 Polyline 实例引用，用于在组件更新或销毁时正确清理。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q5：为什么用 useEffect 分 4 个而不是写在一起？</div>
+        <div class="qa-q">每个 useEffect 管理不同的生命周期阶段和依赖：地图初始化只执行一次；Marker 创建等人物的 JSON 数据变化才重绘；弧线仅随 <span class="inline-code">linePath</span> 变化；高亮切换随 <span class="inline-code">currentEventIndex</span> 变化。分开写职责清晰、避免不必要的副作用执行、也便于后续维护和调试。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q6：关系图为什么用 SVG 而不是 Canvas 或 ECharts？</div>
+        <div class="qa-q">节点数量很少（≤10 个），SVG 的 DOM 操作完全够用，而且 SVG 天然支持 CSS 样式覆盖、事件绑定、无障碍访问。Canvas 适合大数据量但开发成本高，ECharts 引入体积大且自定义样式不如 SVG 灵活。对当前场景 SVG 是最优解。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q7：三年头像的切换逻辑是否支持更多人物？</div>
+        <div class="qa-q">完全支持。<span class="inline-code">CHARACTERS</span> 数组中每人配置 <span class="inline-code">avatarYoung / avatarMiddle / avatarOld</span> 三个字段，GameScreen 中 <span class="inline-code">getAvatarForEvent()</span> 按年龄区间映射。新增人物只需在 characters.js 中添加头像路径，代码层面无需任何改动。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q8：关键抉择的"正确"答案为什么写在第二个选项？</div>
+        <div class="qa-q">这是业务约定。因为所有抉择的正确选项都是符合历史史实的选择（如李白应诏入京、仗剑去国），统一放在 index 1 使得校验逻辑简洁一致：<span class="inline-code">const isCorrect = optionIndex === 1</span>。如果未来需要支持多选或非线性结局，可以改为在数据中加 <span class="inline-code">correctIndex</span> 字段。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q9：CSS 自定义属性的设计系统是如何搭建的？</div>
+        <div class="qa-q">在 <span class="inline-code">common.css</span> 的 <span class="inline-code">:root</span> 中定义统一的色板（宫墙红、琉璃金、熟宣色、墨玉绿等），组件 CSS 通过 <span class="inline-code">var(--primary-color)</span> 引用。好处是一处修改全局生效，且语义化命名让新开发人员能快速理解设计意图。</div>
+      </div>
+
+      <h3 style="margin-top:2rem;color:var(--gray);font-size:0.9rem;">┄┄ 小白向问题 ┄┄</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q11：为什么不直接用百度地图？</div>
+        <div class="qa-a">高德地图对古诗词、人文景点的 POI 数据更丰富，开发者文档也写得比较清楚，接入成本低。两款地图都能完成基本功能，选高德主要是个人偏好和数据展示效果。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q12：这个项目做了多久？</div>
+        <div class="qa-a">前端主体开发约两到三周，包括页面搭建、地图集成、数据整理和交互调试。数据收集（整理三位人物生平、制作抉择剧情）花的时间甚至比写代码还多。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q13：这些历史资料是自己编的还是从哪来的？</div>
+        <div class="qa-a">资料来源于公开的史书资料（《旧唐书》《新唐书》《宋史》）、人物年谱和学术论文。每个事件的时间和地点都做了交叉核对，不是随意编写的。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q14：三个人物的数据量一样多吗？</div>
+        <div class="qa-a">不一样。苏轼的事件最多（他一生辗转的地方多、经历丰富），李清照相对少一些。地图上展示的节点数量自然也不同。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q15：选错了会怎样？</div>
+        <div class="qa-a">选错会显示一段"假如历史"的结局描述（比如李白选择留在家乡，最终默默无闻），然后可以重新选择。只有选对才能继续往下走。这样设计既保留了教育意义，又不会让用户卡死。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q16：手机能打开这个网站吗？</div>
+        <div class="qa-a">可以打开，但推荐用电脑浏览器。高德地图在手机上显示比较拥挤，侧边栏、时间轴这些组件虽然做了自适应适配，但大屏体验明显更好。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q17：怎么保证历史资料没有硬伤？</div>
+        <div class="qa-a">主要参考了中华书局出版的正式年谱和权威学者的研究成果。比如李白的出生地存有学术争议（碎叶说 vs 蜀中说），我们在数据中也标注了"尚存争议"。学术上有定论的按定论来，有争议的不强行下结论。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q18：为什么偏偏选李白、李清照和苏轼这三个人？</div>
+        <div class="qa-a">三个人分别代表唐诗和宋词的最高成就，人生经历都足够跌宕起伏（多次贬谪、颠沛流离），在地图上有丰富的轨迹可展示。而且他们的知名度高，用户不需要额外了解背景就能上手。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q19：这个项目和"百词斩""全知识"那些 App 有什么区别？</div>
+        <div class="qa-a">侧重点不同。那些 App 是通用学习工具，覆盖面广。我们的项目聚焦在"沉浸式体验"——用地图+时间线让人直观感受人物一生走过的地方，关键抉择让用户参与历史决策，诗作弹窗营造文化的沉浸感。更像一个交互式纪录片，而不是学习工具。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q20：以后还能加别的人物吗？比如杜甫、辛弃疾？</div>
+        <div class="qa-a">可以。架构上人物是配置化的，只需要在 <span class="inline-code">characters.js</span> 里新增一条配置，配好三组头像、地图图标、事件 JSON 和抉择 JSON，不需要修改任何代码逻辑。加一个人物的主要工作量其实是数据整理和作画。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q21：弹出窗里的诗是谁写的？</div>
+        <div class="qa-a">诗作原文都是人物本人的作品（李白的《静夜思》、苏轼的《水调歌头》等），直接从《全唐诗》《全宋词》中摘录。程序只负责自动加上书名号、按照诗句分行展示，没有人工改写。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q22：地图上那些弯弯的线是怎么画的？</div>
+        <div class="qa-a">用数学公式（二次贝塞尔曲线）算出一条弧线路径。简单说就是在两点之间取一个向上弯曲的控制点，然后把这条弧线均匀切分成 10 个小段逐段画出来，配合箭头表示移动方向。不是鼠标手画的。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q23：点错了能不能回到上一步？</div>
+        <div class="qa-a">可以。底部有"上一步"按钮，时间轴上的圆点也可以直接点击跳转到任意节点。唯一限制是在触发"关键抉择"时不能切换节点，必须完成或重选后才能继续。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q24：为什么头像会有少年、中年、老年的变化？</div>
+        <div class="qa-a">为了让用户更直观地感受到人物的年龄增长。程序自动计算事件发生时的年龄，30 岁以下用青年画像，30–50 岁用中年，50 岁以上用老年。三个人物各自绘制了三组不同年龄的画像。</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q25：后续有哪些可优化方向？</div>
+        <div class="qa-a">
+          ① API Key 从硬编码改为环境变量注入；② 引入 react-router 支持 URL 路由和 history 导航；③ 用 TypeScript 重写提高类型安全性；④ 用 React.lazy + Suspense 做代码分割，减少首屏加载体积；⑤ 事件数据增加唯一 ID 字段；⑥ 将关键抉择的正确索引改为数据字段配置，提升灵活性。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align:center;padding:2rem 0;border-top:1px solid var(--gold);color:var(--gray);font-size:0.85rem;">
+    <p>史·迹 — 前端项目答辩 · 仅含前端部分</p>
+  </footer>
+</div>
+</body>
+</html>
